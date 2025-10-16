@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="McGPT - Your strategic sales companion">
+    <title>McGPT | Home</title>
+    <link rel="icon" type="image/x-icon" href="https://huggingface.co/spaces/DjayChucko/EnablingSales/resolve/main/images/Scaleway-Logomark-White.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+            extend: {
+                colors: {
+                    primary: '#6366f1',
+                    secondary: '#8b5cf6',
+                }
+            }
+        }
+      }
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; }
+        h1, h2, h3, h4, h5, h6, .font-heading {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .nav-link.active {
+            font-weight: 600;
+            border-bottom: 2px solid #8b5cf6;
+        }
+        .card-hover {
+            @apply transition-all duration-300 hover:scale-105 hover:shadow-xl;
+        }
+        .hamburger-line {
+            @apply w-6 h-0.5 bg-white transition-all duration-300;
+        }
+        #mobileMenuButton.open .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 6px);
+        }
+        #mobileMenuButton.open .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+        #mobileMenuButton.open .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -6px);
+        }
+    </style>
+</head>
+<body class="bg-[#3D1862] min-h-screen flex flex-col relative" style="background-image: radial-gradient(circle at 25% 25%, rgba(39, 8, 71, 0.6) 0%, rgba(39, 8, 71, 0) 50%), radial-gradient(circle at 75% 75%, rgba(59, 15, 110, 0.6) 0%, rgba(59, 15, 110, 0) 50%);">
+<header class="sticky top-0 z-50 bg-purple-800/80 backdrop-blur-md shadow-sm">
+
+<div class="container mx-auto px-4 py-3">
+        <div class="flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2">
+                <img src="https://huggingface.co/spaces/DjayChucko/EnablingSales/resolve/main/images/Scaleway-Logomark-White.png" alt="Logo" class="h-8 mr-2">
+                <span class="text-xl font-bold text-white font-heading">McGPT</span>
+            </a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="value-mapper.html" class="nav-link py-2 px-1 text-white hover:text-purple-300 transition-colors">Mapper</a>
+                                <a href="intel.html" class="nav-link py-2 px-1 text-white hover:text-purple-300 transition-colors">Products</a>
+                <a href="scorecard.html" class="nav-link py-2 px-1 text-white hover:text-purple-300 transition-colors">Scorecard</a>
+                 <a href="strategy.html" class="nav-link py-2 px-1 text-white hover:text-purple-300 transition-colors">Method</a>
+                <a href="academy.html" class="nav-link py-2 px-1 text-white hover:text-purple-300 transition-colors">Academy</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <button id="themeToggle" class="p-2 rounded-full text-white">
+                    <i data-feather="moon"></i>
+                </button>
+                <button id="mobileMenuButton" class="md:hidden flex flex-col space-y-1.5 p-2 z-50 bg-[#9B5CEB] rounded-lg">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+<div id="mobileMenu" class="hidden fixed inset-0 z-40 bg-purple-900">
+    <div class="flex flex-col items-center justify-center h-full space-y-8">
+        <a href="index.html" class="nav-link text-2xl text-white">Home</a>
+        <a href="value-mapper.html" class="nav-link text-2xl text-white">Mapper</a>
+        <a href="intel.html" class="nav-link text-2xl text-white">Products</a>
+        <a href="scorecard.html" class="nav-link text-2xl text-white">Scorecard</a>
+        <a href="strategy.html" class="nav-link text-2xl text-white">Method</a>
+        <a href="academy.html" class="nav-link text-2xl text-white">Academy</a>
+    </div>
+</div>
+<main class="flex-grow">
+    <section class="py-16 sm:py-24">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h1 class="text-4xl lg:text-5xl font-extrabold mb-6 leading-tight text-white">
+                        Raise <span class="bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">Your</span> Game
+                    </h1>
+                    <p class="text-xl mb-8 text-purple-200">
+                        Sales intelligence anywhere, anytime helping you <strong class="font-semibold text-white">qualify</strong>, <strong class="font-semibold text-white">quantify</strong>, and <strong class="font-semibold text-white">justify</strong> Scaleway's value proposition.
+                    </p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="value-mapper.html" class="bg-[#9B5CEB] hover:bg-purple-500 text-white px-8 py-3 rounded-lg font-semibold transition-colors shadow-lg text-center">
+                            Pod Value Mapper
+                        </a>
+                        <a href="scorecard.html" class="bg-purple-500/50 border border-purple-400 hover:bg-purple-500/70 text-white px-8 py-3 rounded-lg font-semibold transition-colors shadow-lg text-center">
+                            MEDDICC Scorecard
+                        </a>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <img src="https://huggingface.co/spaces/DjayChucko/EnablingSales/resolve/main/images/MediaEntertainment-Illustration-transparent.png" alt="Strategic Toolkit Illustration" class="w-full h-auto">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-16 sm:py-24">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-white">
+                A strategic toolkit for <span class="bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">ELITE</span> Sales!
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <a href="value-mapper.html" class="block bg-white/10 text-white rounded-xl p-6 shadow-lg card-hover backdrop-blur-sm border border-white/10">
+                    <div class="w-12 h-12 rounded-lg bg-purple-500/20 flex items-center justify-center mb-4">
+                        <i data-feather="map" class="text-purple-300"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Value Mapping</h3>
+                    <p class="text-purple-200">Qualify leads <strong class="text-white font-medium">effectively</strong> by mapping what they value to Scaleway differentiation.</p>
+                </a>
+                <a href="scorecard.html" class="block bg-white/10 text-white rounded-xl p-6 shadow-lg card-hover backdrop-blur-sm border border-white/10">
+                    <div class="w-12 h-12 rounded-lg bg-purple-500/20 flex items-center justify-center mb-4">
+                        <i data-feather="check-square" class="text-purple-300"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Value Scoring</h3>
+                    <p class="text-purple-200">Utilise our MEDDICC Scorecard to build <strong class="text-white font-medium">real urgency</strong> and improve forecasting.</p>
+                </a>
+                                <a href="intel.html" class="block bg-white/10 text-white rounded-xl p-6 shadow-lg card-hover backdrop-blur-sm border border-white/10">
+                    <div class="w-12 h-12 rounded-lg bg-purple-500/20 flex items-center justify-center mb-4">
+                        <i data-feather="box" class="text-purple-300"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Product Mapping</h3>
+                    <p class="text-purple-200">Quickly compare competitive offerings to improve <strong class="text-white font-medium">STRATEGIC</strong> positioning of Scaleway products.</p>
+                </a>
+                <a href="strategy.html" class="block bg-white/10 text-white rounded-xl p-6 shadow-lg card-hover backdrop-blur-sm border border-white/10">
+                    <div class="w-12 h-12 rounded-lg bg-purple-500/20 flex items-center justify-center mb-4">
+                        <i data-feather="trending-up" class="text-purple-300"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Sales Academy</h3>
+                    <p class="text-purple-200">Learn, perfect & execute Scaleway's proven <strong class="text-white font-medium">value-centric</strong> sales methodology.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+</main>
+<footer class="bg-white-800/80 dark:bg-purple-800/80 backdrop-blur-sm border-t border-gray-700">
+    <div class="container mx-auto px-4 py-8">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-6 md:mb-0">
+
+                <p class="text-sky-600 dark:text-white-300 mt-2 text-sm">
+                    Strategic Tools Enabling Elite Sales
+                </p>
+            </div>
+           
+        <div class="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700 text-center text-sm text-gray-500 dark:text-gray-400">
+            <p>&copy; 2025 McGPT. Always Be Connecting.</p>
+        </div>
+    </div>
+</footer>
+<script>
+    feather.replace();
+    // --- Mobile Menu Toggle ---
+    const mobileMenuButton = document.getElementById('mobileMenuButton');
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+        mobileMenuButton.classList.toggle('open');
+        document.body.classList.toggle('overflow-hidden');
+    });
+    // --- Active Nav Link ---
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-link').forEach(link => {
+        const linkHref = link.getAttribute('href');
+        if (linkHref === currentPage) {
+            link.classList.add('active');
+        } else {
+            link.classList.remove('active');
+        }
+    });
+</script>
+</body>
+</html>

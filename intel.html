@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="McGPT - Your strategic sales companion">
+    <title>Competitive Positioning Mapper</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+  
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+            extend: {
+                colors: {
+                    primary: '#6366f1',
+                    secondary: '#8b5cf6',
+                    dark: '#1e293b'
+                }
+            }
+        }
+      }
+    </script>
+    <style>
+        /* --- UNIFIED HEADER STYLES --- */
+        .nav-link.active {
+            @apply text-primary font-medium border-b-2 border-primary;
+        }
+        .hamburger-line {
+            @apply w-6 h-0.5 bg-white transition-all duration-300;
+        }
+        #mobileMenuButton.open .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 6px);
+        }
+        #mobileMenuButton.open .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+        #mobileMenuButton.open .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -6px);
+        }
+
+        /* --- PAGE-SPECIFIC STYLES --- */
+        select, input[type="search"] {
+            -webkit-appearance: none; -moz-appearance: none; appearance: none;
+        }
+        select {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24' 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.75rem center;
+            background-size: 1.25rem;
+        }
+        .dark select {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24' 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body class="bg-sky-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200 min-h-screen flex flex-col">
+<header class="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-sm">
+    <div class="container mx-auto px-4 py-3">
+        <div class="flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2">
+                <img src="https://huggingface.co/spaces/DjayChucko/EnablingSales/resolve/main/images/Scaleway-Logomark-White.png" alt="Logo" class="h-8 mr-2">
+                <span class="text-xl font-bold text-gray-800 dark:text-white font-heading">McGPT</span>
+            </a>
+            <nav class="hidden md:flex space-x-8">
+
+                <a href="value-mapper.html" class="nav-link py-2 px-1 text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">Mapper</a>
+                <a href="intel.html" class="nav-link py-2 px-1 text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">Products</a>
+                <a href="scorecard.html" class="nav-link py-2 px-1 text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">Scorecard</a>
+                <a href="strategy.html" class="nav-link py-2 px-1 text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">Method</a>
+                <a href="academy.html" class="nav-link py-2 px-1 text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">Academy</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <button id="themeToggle" class="p-2 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700">
+                    <i data-feather="moon" class="hidden dark:block"></i>
+                    <i data-feather="sun" class="block dark:hidden"></i>
+                </button>
+                <button id="mobileMenuButton" class="md:hidden flex flex-col space-y-1.5 p-2 z-50 bg-purple-600 rounded-lg">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div id="mobileMenu" class="hidden fixed inset-0 z-40 bg-gray-900 bg-opacity-95 backdrop-blur-sm">
+    <div class="flex flex-col items-center justify-center h-full space-y-8">
+        <a href="index.html" class="nav-link text-3xl text-white">Home</a>
+        <a href="value-mapper.html" class="nav-link text-3xl text-white">Mapper</a>
+         <a href="intel.html" class="nav-link text-3xl text-white">Products</a>
+        <a href="scorecard.html" class="nav-link text-3xl text-white">Scorecard</a>
+        <a href="strategy.html" class="nav-link text-3xl text-white">Method</a>
+        <a href="academy.html" class="nav-link text-3xl text-white">Academy</a>
+    </div>
+</div>
+<main class="flex-grow bg-gradient-to-br from-purple-600 to-indigo-700">
+    <div class="container mx-auto px-4 py-12">
+        <div class="bg-white/50 dark:bg-gray-900/50 backdrop-blur-md p-6 sm:p-8 rounded-2xl shadow-2xl mb-8">
+            <div class="text-center">
+                    <h1 class="text-3xl sm:text-4xl font-heading font-extrabold text-gray-800 dark:text-white leading-tight">Product Mapper</h1>
+                <div class="flex items-center justify-center mb-3">
+ <img src="https://huggingface.co/spaces/DjayChucko/EnablingSales/resolve/main/images/3D_POP-Instances-Illustration-3D.png" alt="MEDDICC Illustration" class="w-40 mx-auto my-4">
+            </div>
+                <p class="text-gray-700 dark:text-gray-300 max-w-2xl mx-auto mb-8">Match competitive products instantly</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div class="text-center">
+                    <label for="scaleway-product-selector" class="block text-sm font-bold text-gray-800 dark:text-gray-200 mb-2">Competitor by Scaleway Product</label>
+                    <select id="scaleway-product-selector" class="block w-full py-3 px-4 pr-10 border border-gray-300 dark:border-gray-600 rounded-xl text-base font-semibold text-gray-800 dark:text-gray-200 bg-white dark:bg-gray-700 focus:ring-2 focus:ring-purple-500 focus:outline-none transition duration-200 shadow-lg text-center">
+                        <option value="">- Select a Scaleway Product -</option>
+                    </select>
+                </div>
+
+                <div class="text-center">
+                    <label for="competitor-search" class="block text-sm font-bold text-gray-800 dark:text-gray-200 mb-2">Competitor Product vs Scaleway</label>
+                    <input type="search" id="competitor-search" placeholder="e.g., EC2, S3, Blob Storage..." class="block w-full py-3 px-4 border border-gray-300 dark:border-gray-600 rounded-xl text-base font-semibold text-gray-800 dark:text-gray-200 bg-white dark:bg-gray-700 focus:ring-2 focus:ring-purple-500 focus:outline-none transition duration-200 shadow-lg text-center">
+                </div>
+                </div>
+        </div>
+
+        <div id="initial-message" class="text-center p-12 rounded-xl bg-white/80 dark:bg-gray-800/80 text-gray-600 dark:text-gray-300 border-2 border-dashed border-gray-400 dark:border-gray-600 backdrop-blur-sm">
+            <p class="text-lg font-medium">Select a product or search for a competitor to begin.</p>
+        </div>
+
+        <div id="results-area" class="hidden space-y-6">
+            </div>
+    </div>
+</main>
+
+<footer class="bg-purple-800/80 dark:bg-purple-800/80 backdrop-blur-sm border-t border-gray-700">
+    <div class="container mx-auto px-4 py-8">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-6 md:mb-0">
+                <p class="text-gray-600 dark:text-gray-300 mt-2 text-sm">
+                    Strategic Tools Enabling Elite Sales
+                </p>
+            </div>
+           
+        <div class="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700 text-center text-sm text-gray-500 dark:text-gray-400">
+            <p>&copy; 2025 McGPT. Always Be Connecting.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // --- UNIFIED HEADER & THEME LOGIC ---
+    const mobileMenuButton = document.getElementById('mobileMenuButton');
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+        mobileMenuButton.classList.toggle('open');
+        document.body.classList.toggle('overflow-hidden');
+    });
+
+    const themeToggle = document.getElementById('themeToggle');
+    const html = document.documentElement;
+    themeToggle.addEventListener('click', () => {
+        html.classList.toggle('dark');
+        localStorage.theme = html.classList.contains('dark') ? 'dark' : 'light';
+        feather.replace(); // Re-run feather to update icon colors if needed
+    });
+    // Set initial theme
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        html.classList.add('dark');
+    } else {
+        html.classList.remove('dark');
+    }
+
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-link').forEach(link => {
+        const linkHref = link.getAttribute('href');
+        if (linkHref === currentPage) {
+            link.classList.add('active');
+        } else {
+            link.classList.remove('active');
+        }
+    });
+    
+    feather.replace();
+
+    // --- START: Auto-scroll effect ---
+    const mainContent = document.querySelector('main');
+    let initialScrollDone = false;
+
+    const handleInitialScroll = (event) => {
+        // This function triggers only on the user's first downward scroll attempt from the top of the page.
+        if (!initialScrollDone && window.scrollY === 0 && event.deltaY > 0) {
+            event.preventDefault(); // Prevents the default jumpy scroll.
+            mainContent.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Scrolls smoothly to the main content.
+            initialScrollDone = true; // Sets a flag so this doesn't run again.
+        }
+    };
+
+    // We add the listener with { passive: false } because we need to call event.preventDefault().
+    window.addEventListener('wheel', handleInitialScroll, { passive: false });
+    // --- END: Auto-scroll effect ---
+
+
+    // --- PAGE-SPECIFIC MAPPER LOGIC ---
+    const COMPETITOR_DATA = [
+        { Category: "Compute & Virtual Machines", AWS: "EC2", Azure: "Virtual Machines", GCP: "Compute Engine", OracleOCI: "Compute", Scaleway: "Instances", OVHcloud: "Public Cloud", Outscale: "Virtual Machines" },
+        { Category: "Compute & Virtual Machines", AWS: "Lightsail", Azure: "Azure VMware Solution", GCP: "App Engine", OracleOCI: "VMware Solution", Scaleway: "Bare Metal", OVHcloud: "Dedicated Servers", Outscale: "Bare Metal" },
+        { Category: "Compute & Virtual Machines", AWS: "ECS (Containers)", Azure: "Container Instances", GCP: "Cloud Run", OracleOCI: "Container Engine", Scaleway: "Serverless", OVHcloud: "VPS", Outscale: "Kubernetes" },
+        { Category: "Compute & Virtual Machines", AWS: "EKS (Kubernetes)", Azure: "AKS", GCP: "GKE", OracleOCI: "OKE", Scaleway: "Kubernetes", OVHcloud: "Managed K8s", Outscale: "OKS" },
+        { Category: "Storage", AWS: "S3", Azure: "Blob Storage", GCP: "Cloud Storage", OracleOCI: "Object Storage", Scaleway: "Object Storage", OVHcloud: "Object Storage", Outscale: "Object Storage" },
+        { Category: "Storage", AWS: "EBS", Azure: "Disk Storage", GCP: "Persistent Disk", OracleOCI: "Block Volumes", Scaleway: "Block Storage", OVHcloud: "Block Storage", Outscale: "Block Storage" },
+        { Category: "Storage", AWS: "EFS", Azure: "Azure Files", GCP: "Filestore", OracleOCI: "File Storage", Scaleway: "File Storage", OVHcloud: "File Storage", Outscale: "File Storage" },
+        { Category: "Storage", AWS: "Glacier", Azure: "Archive Storage", GCP: "Coldline Storage", OracleOCI: "Archive Storage", Scaleway: "Archive Storage", OVHcloud: "Archive Storage", Outscale: "Archive Storage" },
+        { Category: "Databases", AWS: "RDS", Azure: "Azure SQL Database", GCP: "Cloud SQL", OracleOCI: "Database", Scaleway: "Managed DB", OVHcloud: "Managed DB", Outscale: "Managed DB" },
+        { Category: "Databases", AWS: "DynamoDB", Azure: "Cosmos DB", GCP: "Firestore", OracleOCI: "NoSQL", Scaleway: "NoSQL", OVHcloud: "NoSQL", Outscale: "NoSQL" },
+        { Category: "Databases", AWS: "Aurora", Azure: "SQL Managed Instance", GCP: "AlloyDB", OracleOCI: "Autonomous DB", Scaleway: "SQL", OVHcloud: "SQL", Outscale: "SQL" },
+        { Category: "Databases", AWS: "Redshift", Azure: "Synapse Analytics", GCP: "BigQuery", OracleOCI: "Data Warehouse", Scaleway: "Data Warehouse", OVHcloud: "Data Warehouse", Outscale: "Data Warehouse" },
+        { Category: "Networking", AWS: "VPC", Azure: "Virtual Network", GCP: "VPC", OracleOCI: "VCN", Scaleway: "VPC", OVHcloud: "VPC", Outscale: "VPC" },
+        { Category: "Networking", AWS: "CloudFront", Azure: "Front Door", GCP: "Cloud CDN", OracleOCI: "CDN", Scaleway: "CDN", OVHcloud: "CDN", Outscale: "CDN" },
+        { Category: "Networking", AWS: "Direct Connect", Azure: "ExpressRoute", GCP: "Interconnect", OracleOCI: "FastConnect", Scaleway: "Direct Connect", OVHcloud: "Direct Connect", Outscale: "Direct Connect" },
+        { Category: "Networking", AWS: "Route 53", Azure: "Traffic Manager", GCP: "Cloud DNS", OracleOCI: "DNS", Scaleway: "DNS", OVHcloud: "DNS", Outscale: "DNS" },
+        { Category: "AI/ML & Analytics", AWS: "SageMaker", Azure: "Machine Learning", GCP: "Vertex AI", OracleOCI: "AI Services", Scaleway: "AI Suite", OVHcloud: "AI Tools", Outscale: "AI Services" },
+        { Category: "AI/ML & Analytics", AWS: "Redshift", Azure: "Synapse Analytics", GCP: "BigQuery", OracleOCI: "Analytics Cloud", Scaleway: "Analytics", OVHcloud: "Analytics", Outscale: "Analytics" },
+        { Category: "AI/ML & Analytics", AWS: "Athena", Azure: "Data Lake Analytics", GCP: "Dataflow", OracleOCI: "Data Flow", Scaleway: "Data Flow", OVHcloud: "Data Flow", Outscale: "Data Flow" },
+        { Category: "AI/ML & Analytics", AWS: "QuickSight", Azure: "Power BI", GCP: "Looker", OracleOCI: "Analytics", Scaleway: "BI Tools", OVHcloud: "BI Tools", Outscale: "BI Tools" },
+        { Category: "Security & Identity", AWS: "IAM", Azure: "Entra ID", GCP: "Cloud IAM", OracleOCI: "IAM", Scaleway: "IAM", OVHcloud: "IAM", Outscale: "IAM" },
+        { Category: "Security & Identity", AWS: "GuardDuty", Azure: "Security Center", GCP: "Security Command Center", OracleOCI: "Security Monitoring", Scaleway: "Security", OVHcloud: "Security", Outscale: "Security" },
+        { Category: "Security & Identity", AWS: "KMS", Azure: "Key Vault", GCP: "Cloud KMS", OracleOCI: "Vault", Scaleway: "KMS", OVHcloud: "KMS", Outscale: "KMS" },
+        { Category: "Security & Identity", AWS: "WAF & Shield", Azure: "DDoS Protection", GCP: "Cloud Armor", OracleOCI: "WAF", Scaleway: "WAF", OVHcloud: "WAF", Outscale: "WAF" },
+        { Category: "Serverless & Event-Driven", AWS: "Lambda", Azure: "Functions", GCP: "Cloud Functions", OracleOCI: "Functions", Scaleway: "Serverless", OVHcloud: "Serverless", Outscale: "Serverless" },
+        { Category: "Serverless & Event-Driven", AWS: "EventBridge", Azure: "Event Grid", GCP: "Eventarc", OracleOCI: "Events", Scaleway: "Events", OVHcloud: "Events", Outscale: "Events" },
+        { Category: "Serverless & Event-Driven", AWS: "Step Functions", Azure: "Logic Apps", GCP: "Workflows", OracleOCI: "Workflows", Scaleway: "Workflows", OVHcloud: "Workflows", Outscale: "Workflows" },
+        { Category: "DevOps & Management", AWS: "CloudFormation", Azure: "Resource Manager", GCP: "Deployment Manager", OracleOCI: "Resource Manager", Scaleway: "Terraform", OVHcloud: "Terraform", Outscale: "Terraform" },
+        { Category: "DevOps & Management", AWS: "CodePipeline", Azure: "DevOps", GCP: "Cloud Build", OracleOCI: "DevOps", Scaleway: "CI/CD", OVHcloud: "CI/CD", Outscale: "CI/CD" },
+        { Category: "DevOps & Management", AWS: "CloudWatch", Azure: "Monitor", GCP: "Operations Suite", OracleOCI: "Monitoring", Scaleway: "Monitoring", OVHcloud: "Monitoring", Outscale: "Monitoring" },
+        { Category: "DevOps & Management", AWS: "Systems Manager", Azure: "Automation", GCP: "Config", OracleOCI: "Management", Scaleway: "Management", OVHcloud: "Management", Outscale: "Management" },
+        { Category: "Edge & IoT", AWS: "IoT Core", Azure: "IoT Hub", GCP: "Cloud IoT Core", OracleOCI: "IoT", Scaleway: "IoT", OVHcloud: "IoT", Outscale: "IoT" },
+        { Category: "Edge & IoT", AWS: "Local Zones", Azure: "Edge Zones", GCP: "Edge Network", OracleOCI: "Edge", Scaleway: "Edge", OVHcloud: "Edge", Outscale: "Edge" },
+        { Category: "Edge & IoT", AWS: "Wavelength", Azure: "Private 5G", GCP: "Mobile Edge", OracleOCI: "Edge", Scaleway: "Edge", OVHcloud: "Edge", Outscale: "Edge" },
+        { Category: "Miscellaneous & Specialized", AWS: "Outposts", Azure: "Azure Stack", GCP: "Anthos", OracleOCI: "Dedicated Region", Scaleway: "Dedibox", OVHcloud: "Bare Metal Pod", Outscale: "Sovereign Cloud" },
+        { Category: "Miscellaneous & Specialized", AWS: "WorkSpaces", Azure: "Virtual Desktop", GCP: "BeyondCorp", OracleOCI: "Virtual Desktop", Scaleway: "Virtual Desktop", OVHcloud: "Virtual Desktop", Outscale: "Virtual Desktop" },
+        { Category: "Miscellaneous & Specialized", AWS: "AppSync", Azure: "API Management", GCP: "Apigee", OracleOCI: "API Gateway", Scaleway: "API Gateway", OVHcloud: "API Gateway", Outscale: "API Gateway" },
+        { Category: "Miscellaneous & Specialized", AWS: "Amplify", Azure: "Static Web Apps", GCP: "Firebase Hosting", OracleOCI: "Static Hosting", Scaleway: "Static Hosting", OVHcloud: "Static Hosting", Outscale: "Static Hosting" }
+    ];
+
+    const scalewaySelector = document.getElementById('scaleway-product-selector');
+    const competitorSearch = document.getElementById('competitor-search');
+    const resultsArea = document.getElementById('results-area');
+    const initialMessage = document.getElementById('initial-message');
+
+    function populateScalewayDropdown() {
+        const scalewayProducts = [...new Set(COMPETITOR_DATA.map(item => item.Scaleway))].sort();
+        scalewayProducts.forEach(product => {
+            const option = document.createElement('option');
+            option.value = product;
+            option.textContent = product;
+            scalewaySelector.appendChild(option);
+        });
+    }
+
+    scalewaySelector.addEventListener('change', () => {
+        const selectedProduct = scalewaySelector.value;
+        competitorSearch.value = '';
+        if (!selectedProduct) {
+            resultsArea.classList.add('hidden');
+            initialMessage.classList.remove('hidden');
+            return;
+        }
+        const matchingRows = COMPETITOR_DATA.filter(row => row.Scaleway === selectedProduct);
+        let html = `<h2 class="text-2xl font-bold text-white text-center">Competitors for ${selectedProduct}</h2>`;
+        matchingRows.forEach(row => {
+            html += `<div class="bg-slate-900/70 backdrop-blur-sm p-6 rounded-xl shadow-lg"><h3 class="text-lg font-bold text-purple-400 mb-4">Category: ${row.Category}</h3><div class="grid grid-cols-2 sm:grid-cols-3 gap-4 text-base">`;
+            const providers = { AWS: row.AWS, Azure: row.Azure, GCP: row.GCP, OracleOCI: row.OracleOCI, OVHcloud: row.OVHcloud, Outscale: row.Outscale };
+            for (const [provider, product] of Object.entries(providers)) {
+                html += `<div><span class="font-semibold text-gray-100">${provider}:</span> <span class="text-gray-200">${product}</span></div>`;
+            }
+            html += `</div></div>`;
+        });
+        resultsArea.innerHTML = html;
+        initialMessage.classList.add('hidden');
+        resultsArea.classList.remove('hidden');
+        resultsArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
+    competitorSearch.addEventListener('input', () => {
+        const searchTerm = competitorSearch.value.trim().toLowerCase();
+        scalewaySelector.value = '';
+        if (!searchTerm) {
+            resultsArea.classList.add('hidden');
+            initialMessage.classList.remove('hidden');
+            return;
+        }
+        const results = [];
+        const providers = ["AWS", "Azure", "GCP", "OracleOCI", "OVHcloud", "Outscale"];
+        COMPETITOR_DATA.forEach(row => {
+            providers.forEach(provider => {
+                if (row[provider] && row[provider].toLowerCase().includes(searchTerm)) {
+                    results.push({ provider, competitorProduct: row[provider], scalewayProduct: row.Scaleway, category: row.Category });
+                }
+            });
+        });
+        let html = `<h2 class="text-2xl font-bold text-white text-center">Results for "${competitorSearch.value}"</h2>`;
+        if (results.length > 0) {
+            results.forEach(res => {
+                html += `<div class="bg-slate-900/70 backdrop-blur-sm p-6 rounded-xl shadow-lg"><p class="text-gray-200 text-lg mb-2"><span class="font-bold text-white">${res.competitorProduct}</span> (${res.provider})</p><p class="text-purple-400 font-bold text-xl">Scaleway Equivalent: ${res.scalewayProduct}</p><p class="text-sm text-gray-400 mt-2">Category: ${res.category}</p></div>`;
+            });
+        } else {
+            html += `<p class="text-center text-white/80 mt-4">No matching competitor products found.</p>`;
+        }
+        resultsArea.innerHTML = html;
+        initialMessage.classList.add('hidden');
+        resultsArea.classList.remove('hidden');
+        resultsArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
+    window.onload = () => {
+        populateScalewayDropdown();
+    };
+</script>
+</body>
+</html>

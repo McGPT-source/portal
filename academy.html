@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="McGPT - Our Sales Methodology">
+    <title>Sales Academy | McGPT</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+            extend: {
+                colors: {
+                    primary: '#6366f1',
+                    secondary: '#8b5cf6',
+                    dark: '#1e293b'
+                }
+            }
+        }
+      }
+    </script>
+    <style>
+        /* --- UNIFIED HEADER STYLES --- */
+        .nav-link.active {
+            @apply text-primary font-medium border-b-2 border-primary;
+        }
+        .hamburger-line {
+            @apply w-6 h-0.5 bg-white transition-all duration-300;
+        }
+        #mobileMenuButton.open .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 6px);
+        }
+        #mobileMenuButton.open .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+        #mobileMenuButton.open .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -6px);
+        }
+
+        /* --- PAGE-SPECIFIC STYLES --- */
+        h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; }
+    </style>
+</head>
+<body class="bg-[#3D1862] text-white min-h-screen flex flex-col" style="background-image: radial-gradient(circle at 25% 25%, rgba(39, 8, 71, 0.6) 0%, rgba(39, 8, 71, 0) 50%), radial-gradient(circle at 75% 75%, rgba(59, 15, 110, 0.6) 0%, rgba(59, 15, 110, 0) 50%);">
+<header class="sticky top-0 z-50 bg-purple-800/80 backdrop-blur-md shadow-sm">
+    </div>
+<div class="container mx-auto px-4 py-3">
+        <div class="flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2">
+                <img src="https://huggingface.co/spaces/DjayChucko/EnablingSales/resolve/main/images/Scaleway-Logomark-White.png" alt="Logo" class="h-8 mr-2">
+                <span class="text-xl font-bold text-white font-heading">McGPT</span>
+            </a>
+            <nav class="hidden md:flex space-x-8">
+            
+                <a href="value-mapper.html" class="nav-link py-2 px-1 text-white hover:text-primary transition-colors">Mapper</a>
+                <a href="intel.html" class="nav-link py-2 px-1 text-white hover:text-primary transition-colors">Products</a>
+                <a href="scorecard.html" class="nav-link py-2 px-1 text-white hover:text-primary transition-colors">Scorecard</a>
+                <a href="strategy.html" class="nav-link py-2 px-1 text-white hover:text-primary transition-colors">Method</a>
+                <a href="academy.html" class="nav-link py-2 px-1 text-white hover:text-primary transition-colors">Academy</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <button id="themeToggle" class="p-2 rounded-full text-white hover:bg-white/20">
+                    <i data-feather="moon" class="hidden dark:block"></i>
+                    <i data-feather="sun" class="block dark:hidden"></i>
+                </button>
+                <button id="mobileMenuButton" class="md:hidden flex flex-col space-y-1.5 p-2 z-50 bg-[#9B5CEB] rounded-lg">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div id="mobileMenu" class="hidden fixed inset-0 z-40 bg-purple-900 bg-opacity-95 backdrop-blur-sm">
+    <div class="flex flex-col items-center justify-center h-full space-y-8">
+        <a href="index.html" class="nav-link text-3xl text-white">Home</a>
+        <a href="value-mapper.html" class="nav-link text-3xl text-white">Mapper</a>
+        <a href="intel.html" class="nav-link text-3xl text-white">Products</a>
+        <a href="scorecard.html" class="nav-link text-3xl text-white">Scorecard</a>
+        <a href="strategy.html" class="nav-link text-3xl text-white">Method</a>
+        <a href="academy.html" class="nav-link text-3xl text-white">Academy</a>
+    </div>
+</div>
+<main class="flex-grow">
+    <div class="container mx-auto px-4 py-16">
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-extrabold text-white"> CORE Sales</h1>
+            <p class="mt-4 text-lg text-purple-200">Great discovery focuses on the "Why buy?"</p>
+        </div>
+        <div id="content-container" class="max-w-4xl mx-auto space-y-8">
+           <div id="discovery-qualification" class="content-block bg-white/10 backdrop-blur-md border border-white/10 p-8 rounded-xl shadow-lg scroll-mt-24">
+                <h2 class="text-2xl font-bold text-purple-300 mb-4">Phase 1: Discovery & Qualification</h2>
+                <p class="text-purple-100 mb-4">This initial phase is about deep listening and understanding. We use tools like the Value Mapper to connect a prospect's challenges to our core strengths. The goal is not to sell, but to diagnose. By the end of this phase, we should have a clear understanding of the customer's pain and the potential metrics for success.</p>
+                <p class="text-purple-100"><a href="https://scaleway.360learning.com/group/66fbe9a4f3281e47975115a2/stats/courses" target="_blank" rel="noopener noreferrer"><strong>To learn more visit this module on Sales Academy (360Learning)</strong>.</a></p>
+            </div>
+            <div id="business-case" class="content-block bg-white/10 backdrop-blur-md border border-white/10 p-8 rounded-xl shadow-lg scroll-mt-24">
+                <h2 class="text-2xl font-bold text-purple-300 mb-4">Phase 2: Building the Business Case</h2>
+                <p class="text-purple-100 mb-4">Once a legitimate pain is identified, we transition to quantifying the value of our solution. This involves co-creating a business case with our champion, aligning our technical solution to measurable business outcomes. The <strong>MEDDICC Scorecard</strong> becomes critical here to track our alignment with the key people and processes involved in the decision.</p>
+                <p class="text-purple-100"><a href="https://scaleway.360learning.com/group/66fbe9a4f3281e47975115a2/stats/courses" target="_blank" rel="noopener noreferrer"><strong>To learn more visit this module on Sales Academy (360Learning)</strong>.</a></p>
+            </div>
+            <div id="evaluation-justification" class="content-block bg-white/10 backdrop-blur-md border border-white/10 p-8 rounded-xl shadow-lg scroll-mt-24">
+                <h2 class="text-2xl font-bold text-purple-300 mb-4">Phase 3: Evaluation & Justification</h2>
+                <p class="text-purple-100 mb-4">In this phase, we prove our claims through a PoC or detailed evaluation. Success is not just technical validation, but demonstrating the agreed-upon business value. We focus on differentiating against the competition and mitigating any perceived risks or blockers, ensuring our champion is equipped to justify the investment to the Economic Buyer.</p>
+                <p class="text-purple-100"><a href="https://scaleway.360learning.com/group/66fbe9a4f3281e47975115a2/stats/courses" target="_blank" rel="noopener noreferrer"><strong>To learn more visit this module on Sales Academy (360Learning)</strong>.</a></p>
+            </div>
+        </div>
+
+        <div class="max-w-4xl mx-auto space-y-8 mt-24">
+            <div class="text-center mb-12">
+                <h1 class="text-4xl font-extrabold text-white">STRATEGIC Sales</h1>
+                <p class="mt-4 text-lg text-purple-200">Compelling business cases answer "Why now?"</p>
+            </div>
+            <div id="stakeholder-mapping" class="bg-white/10 backdrop-blur-md border border-white/10 p-8 rounded-xl shadow-lg scroll-mt-24">
+                <h2 class="text-2xl font-bold text-purple-300 mb-4">1. Map Stakeholders to Find Your Mobilizer</h2>
+                <p class="text-purple-100 mb-4">Before you can create urgency, you must understand who holds the power to act. Use tools like <strong>Sales Navigator & Generative AI</strong> to identify stakeholders and the <strong>Economic Buyer</strong>. Tailor your message for different personas (Strategic, Tactical, Operational) to build consensus and find a champion who can drive change.</p>
+                <p class="text-purple-100"><a href="https://scaleway.360learning.com/group/66fbe9a4f3281e47975115a2/stats/courses" target="_blank" rel="noopener noreferrer"><strong>To learn more visit this module on Sales Academy (360Learning)</strong>.</a></p>
+            </div>
+            <div id="meetings-demos" class="bg-white/10 backdrop-blur-md border border-white/10 p-8 rounded-xl shadow-lg scroll-mt-24">
+                <h2 class="text-2xl font-bold text-purple-300 mb-4">2. Master Meetings & Demos to Drive Momentum</h2>
+                <p class="text-purple-100 mb-4">Every interaction is an opportunity to move the deal forward. <strong> Prepare</strong> with a clear agenda, <strong>execute</strong> by focusing on their pain points, and **follow up** immediately with a summary and next steps to maintain the urgency you've built.</p>
+                <p class="text-purple-100"><a href="https://scaleway.360learning.com/group/66fbe9a4f3281e47975115a2/stats/courses" target="_blank" rel="noopener noreferrer"><strong>To learn more visit this module on Sales Academy (360Learning)</strong>.</a></p>
+            </div>
+            <div id="qualify-meddicc" class="bg-white/10 backdrop-blur-md border border-white/10 p-8 rounded-xl shadow-lg scroll-mt-24">
+                <h2 class="text-2xl font-bold text-purple-300 mb-4">3. Qualify with MEDDICC to Build the Business Case</h2>
+                <p class="text-purple-100 mb-4">The <strong>MEDDICC Scorecard</strong> is your tool for rigorously qualifying a deal. Use it to ask targeted questions about <strong>Metrics</strong>, <strong>Decision Criteria</strong>, and the <strong>Decision Process</strong>. By quantifying their pain and understanding their timeline, you can align Scaleway’s value directly with their most pressing needs.</p>
+                <p class="text-purple-100"><a href="https://scaleway.360learning.com/group/66fbe9a4f3281e47975115a2/stats/courses" target="_blank" rel="noopener noreferrer"><strong>To learn more visit this module on Sales Academy (360Learning)</strong>.</a></p>
+            </div>
+            <div id="deal-progression" class="bg-white/10 backdrop-blur-md border border-white/10 p-8 rounded-xl shadow-lg scroll-mt-24">
+                <h2 class="text-2xl font-bold text-purple-300 mb-4">4. Accelerate Deal Progression with Trigger Events</h2>
+                <p class="text-purple-100 mb-4">Leverage internal or external pressures to accelerate the decision. Use <strong>ROI and Case Studies</strong> to turn your solution into a "must-have." Listen for <strong>trigger events</strong> like regulatory changes, security vulnerabilities, or budget cycles to provide the final, powerful answer to "Why Now?".</p>
+                <p class="text-purple-100"><a href="https://scaleway.360learning.com/group/66fbe9a4f3281e47975115a2/stats/courses" target="_blank" rel="noopener noreferrer"><strong>To learn more visit this module on Sales Academy (360Learning)</strong>.</a></p>
+            </div>
+        </div>
+
+        <div class="max-w-4xl mx-auto space-y-8 mt-24">
+            <div class="text-center mb-12">
+                <h1 class="text-4xl font-extrabold text-white"> ELITE Sales</h1>
+                <p class="mt-4 text-lg text-purple-200">Justify Scaleway's unique differentiation.</p>
+            </div>
+            <div id="solution-architects" class="bg-white/10 backdrop-blur-md border border-white/10 p-8 rounded-xl shadow-lg scroll-mt-24">
+                <h2 class="text-2xl font-bold text-purple-300 mb-4">Solution Architects as Partners</h2>
+                <p class="text-purple-100 mb-4">Our Pre-Sales and Solution Architects (SAs) are your technical partners, ensuring every solution is tailored, validated, and optimized for your unique needs.</p>
+                <ul class="space-y-3 text-purple-100 mb-4">
+                    <li class="flex items-start">
+                        <svg class="w-6 h-6 text-purple-400 mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <span><strong>Expertise on Demand:</strong> SAs dedicate their time to customer meetings, technical Q&A, and building custom demos.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-6 h-6 text-purple-400 mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <span><strong>Early Engagement:</strong> Involve SAs from qualification to closing to ensure technical feasibility and alignment.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-6 h-6 text-purple-400 mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <span><strong>Seamless Collaboration:</strong> Use dedicated channels like #sales-technical-questions for rapid, expert support.</span>
+                    </li>
+                </ul>
+                <p class="text-purple-100"><a href="https://scaleway.360learning.com/group/66fbe9a4f3281e47975115a2/stats/courses" target="_blank" rel="noopener noreferrer"><strong>To learn more visit this module on Sales Academy (360Learning)</strong>.</a></p>
+            </div>
+            <div id="proposals" class="bg-white/10 backdrop-blur-md border border-white/10 p-8 rounded-xl shadow-lg scroll-mt-24">
+                <h2 class="text-2xl font-bold text-purple-300 mb-4">Engaging Proposals & ELITE Sales</h2>
+                <p class="text-purple-100 mb-4">We don’t just present—we engage, persuade, and build trust with every stakeholder.</p>
+                <ul class="space-y-3 text-purple-100 mb-4">
+                    <li class="flex items-start">
+                        <svg class="w-6 h-6 text-purple-400 mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <span><strong>Tailored C-Level Ready Presentations:</strong> Our proposals are structured for clarity and impact, using storytelling, visuals, and reinforcement.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-6 h-6 text-purple-400 mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <span><strong>Stakeholder-Centric:</strong> We adapt our communication style to resonate with every decision-maker, from analytical to expressive.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-6 h-6 text-purple-400 mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <span><strong>Interactive & Personalized:</strong> Polls, live demos, and custom case studies make every presentation relevant and engaging.</span>
+                    </li>
+                </ul>
+                <p class="text-purple-100"><a href="https://scaleway.360learning.com/group/66fbe9a4f3281e47975115a2/stats/courses" target="_blank" rel="noopener noreferrer"><strong>To learn more visit this module on Sales Academy (360Learning)</strong>.</a></p>
+            </div>
+            <div id="negotiation" class="bg-white/10 backdrop-blur-md border border-white/10 p-8 rounded-xl shadow-lg scroll-mt-24">
+                <h2 class="text-2xl font-bold text-purple-300 mb-4">Value-Centric Negotiation & Closing</h2>
+                <p class="text-purple-100 mb-4">Our negotiation approach is built on value, trust, and mutual success—not just price.</p>
+                <ul class="space-y-3 text-purple-100 mb-4">
+                    <li class="flex items-start">
+                        <svg class="w-6 h-6 text-purple-400 mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <span><strong>Value-Centric Tactics:</strong> We focus on “win-win” outcomes and understanding your BATNA (Best Alternative To a Negotiated Agreement).</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-6 h-6 text-purple-400 mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <span><strong>Advanced Techniques:</strong> We use mirroring and strategic “no” tactics to build rapport and uncover real needs.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-6 h-6 text-purple-400 mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <span><strong>Transparent & Collaborative:</strong> We use emotional intelligence and collaborative problem-solving to align solutions with your goals.</span>
+                    </li>
+                </ul>
+                <p class="text-purple-100"><a href="https://scaleway.360learning.com/group/66fbe9a4f3281e47975115a2/stats/courses" target="_blank" rel="noopener noreferrer"><strong>To learn more visit this module on Sales Academy (360Learning)</strong>.</a></p>
+            </div>
+            <div id="forecasting" class="bg-white/10 backdrop-blur-md border border-white/10 p-8 rounded-xl shadow-lg scroll-mt-24">
+                <h2 class="text-2xl font-bold text-purple-300 mb-4">Forecasting Mastery</h2>
+                <p class="text-purple-100 mb-4">Accurate forecasting means better planning, fewer surprises, and more reliable results.</p>
+                <ul class="space-y-3 text-purple-100 mb-4">
+                    <li class="flex items-start">
+                        <svg class="w-6 h-6 text-purple-400 mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <span><strong>Data-Driven:</strong> We use MEDDICC-aligned scorecards and historical analysis for precise, actionable forecasts.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-6 h-6 text-purple-400 mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <span><strong>Multi-Perspective:</strong> Bottom-up and top-down approaches ensure comprehensive, realistic revenue predictions.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-6 h-6 text-purple-400 mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <span><strong>Continuous Improvement:</strong> Regular reviews and tool integration keep forecasts sharp and responsive.</span>
+                    </li>
+                </ul>
+                <p class="text-purple-100"><a href="https://scaleway.360learning.com/group/66fbe9a4f3281e47975115a2/stats/courses" target="_blank" rel="noopener noreferrer"><strong>To learn more visit this module on Sales Academy (360Learning)</strong>.</a></p>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="bg-purple-800/80 dark:bg-purple-800/80 backdrop-blur-sm border-t border-gray-700">
+    <div class="container mx-auto px-4 py-8">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-6 md:mb-0">
+                <p class="text-white-600 dark:text-gray-300 mt-2 text-sm">
+                    Strategic Tools Enabling Elite Sales
+                </p>
+            </div>
+           
+        <div class="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700 text-center text-sm text-gray-500 dark:text-gray-400">
+            <p>&copy; 2025 McGPT. Always Be Connecting.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    feather.replace();
+    const mobileMenuButton = document.getElementById('mobileMenuButton');
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+        mobileMenuButton.classList.toggle('open');
+    });
+</script>
+
+</body>
+</html>

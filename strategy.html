@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="McGPT Strategy Methodology">
+    <title>McGPT | Strategy</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    // Add Space Grotesk as the default sans-serif font family
+                    fontFamily: {
+                        sans: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#6366f1',
+                        secondary: '#8b5cf6',
+                        dark: '#1e293b'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .nav-link.active {
+            @apply text-primary font-medium border-b-2 border-primary;
+        }
+        .card-hover {
+            @apply transition-all duration-300 hover:scale-105 hover:shadow-xl;
+        }
+        /* --- UNIFIED HAMBURGER STYLES --- */
+        .hamburger-line {
+            @apply w-6 h-0.5 bg-white transition-all duration-300;
+        }
+        #mobileMenuButton.open .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 6px);
+        }
+        #mobileMenuButton.open .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+        #mobileMenuButton.open .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -6px);
+        }
+</style>
+</head>
+<body class="font-sans bg-[#3D1862] dark:bg-[#3D1862] text-blue-900 dark:text-blue-900 min-h-screen flex flex-col relative" style="background-image: radial-gradient(circle at 25% 25%, rgba(39, 8, 71, 0.6) 0%, rgba(39, 8, 71, 0) 50%), radial-gradient(circle at 75% 75%, rgba(59, 15, 110, 0.6) 0%, rgba(59, 15, 110, 0) 50%);">
+
+<header class="sticky top-0 z-50 bg-purple-800/80 backdrop-blur-md shadow-sm">
+    <div class="container mx-auto px-4 py-3">
+        <div class="flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2">
+                <img src="https://huggingface.co/spaces/DjayChucko/EnablingSales/resolve/main/images/Scaleway-Logomark-White.png" alt="Logo" class="h-8 mr-2">
+                <span class="text-xl font-bold text-white font-heading">McGPT</span>
+            </a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="value-mapper.html" class="nav-link py-2 px-1 text-white hover:text-primary transition-colors">Mapper</a>
+                <a href="intel.html" class="nav-link py-2 px-1 text-white hover:text-primary transition-colors">Products</a>
+                <a href="scorecard.html" class="nav-link py-2 px-1 text-white hover:text-primary transition-colors">Scorecard</a>
+                <a href="strategy.html" class="nav-link py-2 px-1 text-white hover:text-primary transition-colors">Method</a>
+                <a href="academy.html" class="nav-link py-2 px-1 text-white hover:text-primary transition-colors">Academy</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <button id="themeToggle" class="p-2 rounded-full text-white hover:bg-gray-200 dark:hover:bg-gray-700">
+                    <i data-feather="moon" class="hidden dark:block"></i>
+                    <i data-feather="sun" class="block dark:hidden"></i>
+                </button>
+                <button id="mobileMenuButton" class="md:hidden flex flex-col space-y-1.5 p-2 z-50 bg-[#9B5CEB] rounded-lg">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div id="mobileMenu" class="hidden fixed inset-0 z-40 bg-purple-900 bg-opacity-95 backdrop-blur-sm">
+    <div class="flex flex-col items-center justify-center h-full space-y-8">
+        <a href="index.html" class="nav-link text-3xl text-white">Home</a>
+        <a href="value-mapper.html" class="nav-link text-3xl text-white">Mapper</a>
+        <a href="intel.html" class="nav-link text-3xl text-white">Products</a>
+        <a href="scorecard.html" class="nav-link text-3xl text-white">Scorecard</a>
+        <a href="strategy.html" class="nav-link text-3xl text-white">Method</a>
+        <a href="academy.html" class="nav-link text-3xl text-white">Academy</a>
+    </div>
+</div>
+<style>
+    /* Scoped styles for the Scaleway Sales Content block. */
+    #scaleway-sales-content {
+        background-color: #3D1862; /* Matched to page background */
+        color: #d1d5db; /* Default light text for this section */
+        line-height: 1.6;
+    }
+
+    #scaleway-sales-content .container {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    #scaleway-sales-content h1, 
+    #scaleway-sales-content h2, 
+    #scaleway-sales-content h3,
+    #scaleway-sales-content h4 {
+        color: #DB87FF;
+        line-height: 1.3;
+    }
+    
+    #scaleway-sales-content h1 { font-size: 2.5rem; }
+    #scaleway-sales-content h2 { font-size: 2rem; border-bottom: 2px solid #e5e7eb; padding-bottom: 10px; margin-top: 40px; }
+    #scaleway-sales-content h3 { font-size: 1.5rem; }
+
+    #scaleway-sales-content .hero {
+        background: linear-gradient(135deg, #4B0082, #1a002e);
+        color: #ffffff;
+        padding: 60px 20px;
+        text-align: center;
+    }
+    #scaleway-sales-content .hero h1 {
+        color: #ffffff;
+        font-size: 3rem;
+        margin-bottom: 10px;
+    }
+    #scaleway-sales-content .hero .subtitle {
+        font-size: 1.25rem;
+        font-weight: 300;
+        max-width: 700px;
+        margin: 0 auto 30px auto;
+    }
+    #scaleway-sales-content .hero .subtitle strong {
+        color: #d8b4fe;
+        font-weight: 600;
+    }
+    
+    #scaleway-sales-content .cta-button {
+        display: inline-block;
+        background-color: #a855f7;
+        color: #ffffff;
+        padding: 15px 30px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1.1rem;
+        transition: background-color 0.3s ease;
+    }
+    #scaleway-sales-content .cta-button:hover {
+        background-color: #9333ea;
+    }
+    #scaleway-sales-content .framework-list {
+        list-style: none;
+        padding: 0;
+    }
+    #scaleway-sales-content .framework-list li {
+        background-color: #ffffff;
+        border: 1px solid #e5e7eb;
+        color: #374151;
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 15px;
+    }
+    #scaleway-sales-content .framework-list strong {
+        color: #8A2BE2;
+        font-size: 1.2rem;
+    }
+    @media (max-width: 768px) {
+        #scaleway-sales-content h1 { font-size: 2.2rem; }
+        #scaleway-sales-content .hero h1 { font-size: 2.5rem; }
+    }
+</style>
+</main>
+<main class="flex-grow bg-purple-800 backdrop-blur-sm">
+    <section class="container mx-auto px-4 py-16 md:py-24">
+        <div class="text-center mb-16">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight text-white">
+                    <strong>Value-Centric</strong>
+<span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-[#C43BFF]">Method</span>
+</h1>
+            <p class="text-xl mb-8 text-white dark:text-white font-light max-w-3xl mx-auto">
+                Enabling sales to <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-[#DB87FF]">QUALIFY</span>, <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-[#DB87FF]">QUANTIFY</span> and <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-[#DB87FF]">JUSTIFY</span> a unique value proposition.
+            </p>
+
+            <div class="flex justify-center my-8">
+                <img src="https://huggingface.co/spaces/DjayChucko/EnablingSales/resolve/main/images/Type=Kube.png" alt="Mascot with a pointer stick pointing at a Kubernetes logo on a screen" class="h-64 w-auto rounded-xl shadow-2xl">
+            </div>
+            <p class="text-2xl mb-8 text-white dark:text-white font-bold max-w-3xl mx-auto">
+            <strong>"Why, why, why?"</strong>
+            </p>
+<p class="text-xl mb-8 text-white dark:text-white font-light max-w-3xl mx-auto">
+                <strong>Qualifying the <strong>"the 3 whys"</strong> step-by-step enables us to align our innovative and industry leading solutions to our customer's most critical business objectives</strong>
+            </p>
+ 
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            <div class="bg-white/10 p-8 rounded-xl backdrop-blur-sm border border-white/20">
+                <div class="w-14 h-14 bg-primary/20 rounded-lg flex items-center justify-center mb-6">
+                    <i data-feather="target" class="text-sky-400 w-6 h-6"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3 text-white">Why Buy?</h3>
+                <p class="text-gray-300">Systematic approach to assess deal viability and strategic fit using our Value-Centric methodology</p>
+            </div>
+            <div class="bg-white/10 p-8 rounded-xl backdrop-blur-sm border border-white/20">
+                <div class="w-14 h-14 bg-secondary/20 rounded-lg flex items-center justify-center mb-6">
+                    <i data-feather="users" class="text-sky-400 w-6 h-6"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3 text-white">Why Now?</h3>
+                <p class="text-gray-300">How to map strategic accounts and engage key decision makers, influencers, and economic buyers</p>
+            </div>
+            <div class="bg-white/10 p-8 rounded-xl backdrop-blur-sm border border-white/20">
+                <div class="w-14 h-14 bg-primary/20 rounded-lg flex items-center justify-center mb-6">
+                <i data-feather="trending-up" class="text-sky-400 w-8 h-8"></i>
+</div>
+                <h3 class="text-xl font-bold mb-3 text-white">Why Us?</h3>
+                <p class="text-gray-300">Clearly communicate differentiated value and attach it to customer verified objectives</p>
+            </div>
+        </div>
+
+        <div class="bg-white/10 rounded-xl p-8 backdrop-blur-sm border border-white/20 mb-16">
+            <h2 class="text-2xl font-bold mb-6 text-white border-b pb-4 border-white/20">Core Methodology</h2>
+            <div class="space-y-8">
+                <div class="flex flex-col md:flex-row gap-6">
+                    <div class="flex-shrink-0 w-16 h-16 bg-primary/20 rounded-lg flex items-center justify-center">
+                        <span class="text-2xl font-bold text-sky-400">1</span>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2 text-white">Discovery & Pain Identification</h3>
+                        <p class="text-gray-300">Use our industry-specific discovery questions to uncover key business challenges, pains and priorities. Customers care more about solving problems than buying products, so should you</p>
+                    </div>
+                </div>
+                <div class="flex flex-col md:flex-row gap-6">
+                    <div class="flex-shrink-0 w-16 h-16 bg-secondary/20 rounded-lg flex items-center justify-center">
+                        <span class="text-2xl font-bold text-sky-400">2</span>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2 text-white">Value Mapping</h3>
+                        <p class="text-gray-300">Every buyer, in every every industry has different needs. Start strong by aligning "likely" customer needs with our core value propositions using the Value Mapper tool</p>
+                    </div>
+                </div>
+                <div class="flex flex-col md:flex-row gap-6">
+                    <div class="flex-shrink-0 w-16 h-16 bg-primary/20 rounded-lg flex items-center justify-center">
+                        <span class="text-2xl font-bold text-sky-400">3</span>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2 text-white">Quantification</h3>
+                        <p class="text-gray-300">Remember, going slow builds momentum and urgency that helps drive deal progression. Use MEDDICC to quantify business outcomes and ROI using our scorecard approach</p>
+                    </div>
+                </div>
+                <div class="flex flex-col md:flex-row gap-6">
+                    <div class="flex-shrink-0 w-16 h-16 bg-secondary/20 rounded-lg flex items-center justify-center">
+                        <span class="text-2xl font-bold text-sky-400">4</span>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2 text-white">Decision Process Alignment</h3>
+                        <p class="text-gray-300">It takes a village to win a new customer. Map and influence stakeholders, buying criteria and timeline during each step of the decision-making process. Expect delays, blockers and last-minute changes in high value deals</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<main id="scaleway-sales-content">
+
+    <header class="hero">
+         <p class="subtitle">
+            <strong>Value-centric</strong> selling is <strong>DELIBERATE</strong>.
+        </p>
+         <p class="subtitle">
+             We intentionally identify and attach our offering to <strong>CUSTOMER VERIFIED</strong>  value. 
+        </p>
+    </header>
+
+    <div class="container">
+        <section id="framework">
+            <ul class="framework-list">
+                <li class="text-center text-xl"><strong>6 Steps to Value</strong> = <strong class="text-[#8F1CC2]">I.L.L.I.A.D</strong>.</li>
+                <li><strong>I</strong>DENTIFY: Uncover existing priorities, pain and strategic challenges existing in the customer's <strong>current state</strong>.</li>
+                <li><strong>L</strong>ISTEN: Actively listen to understand the negative  <strong>business impact</strong> these pains create for the customer.</li>
+                <li><strong>L</strong>EARN: Go beyond the pain & uncover the strategic objectives their desired <strong>future state</strong> will deliver.</li>
+                <li><strong>I</strong>NVESTIGATE: the <strong>quantifiable</strong> impact and consequences of this pain, what is the cost of <strong>inaction</strong>?</li>
+                <li><strong>A</strong>SSESS: Map the path from their <strong>current state</strong> to their <strong>future State</strong> and quantify the strategic value of the change.</li>
+                <li><strong>D</strong>ELIVER: Present a tailored Scaleway solution that delivers the specific, <strong>customer verified</strong> value and outcomes they need to achieve.</li>
+            </ul>
+        </section>
+        <section id="Sales-Academy" class="text-center" style="margin-top: 20px; padding-bottom: 20px;">
+            <a href="https://scaleway.360learning.com/group/66fbe9a4f3281e47975115a2/stats/courses/mine/active" class="cta-button">Enroll in the Sales Academy Now</a>
+        </section>
+    </div>
+
+<footer class="bg-purple-800/80 dark:bg-purple-800/80 backdrop-blur-sm border-t border-gray-700">
+    <div class="container mx-auto px-4 py-8">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-6 md:mb-0">
+
+                <p class="text-gray-600 dark:text-gray-300 mt-2 text-sm">
+                    Strategic Tools Enabling Elite Sales
+                </p>
+            </div>
+           
+        <div class="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700 text-center text-sm text-gray-500 dark:text-gray-400">
+            <p>&copy; 2025 McGPT. Always Be Connecting.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // --- Mobile Menu Toggle ---
+    const mobileMenuButton = document.getElementById('mobileMenuButton');
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+        mobileMenuButton.classList.toggle('open');
+        document.body.classList.toggle('overflow-hidden');
+    });
+
+    // --- Theme Toggle ---
+    const themeToggle = document.getElementById('themeToggle');
+    const html = document.documentElement;
+    themeToggle.addEventListener('click', () => {
+        html.classList.toggle('dark');
+        localStorage.theme = html.classList.contains('dark') ? 'dark' : 'light';
+    });
+    // Set initial theme based on localStorage or default to dark
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        html.classList.add('dark');
+    } else {
+        html.classList.remove('dark');
+    }
+
+    // --- Set Active Nav Link ---
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-link').forEach(link => {
+        const linkHref = link.getAttribute('href');
+        if (linkHref === currentPage) {
+            link.classList.add('active');
+        } else {
+            link.classList.remove('active');
+        }
+    });
+
+    // --- Feather Icons ---
+    feather.replace();
+</script>
+</body>
+</html>

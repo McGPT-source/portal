@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Qualification Tool</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+            extend: {
+                colors: {
+                    primary: '#6366f1',
+                    secondary: '#8b5cf6',
+                    dark: '#1e293b'
+                }
+            }
+        }
+      }
+    </script>
+    <style>
+        /* --- UNIFIED HEADER STYLES --- */
+        .nav-link.active {
+            @apply text-primary font-medium border-b-2 border-primary;
+        }
+        .hamburger-line {
+            @apply w-6 h-0.5 bg-white transition-all duration-300;
+        }
+        #mobileMenuButton.open .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 6px);
+        }
+        #mobileMenuButton.open .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+        #mobileMenuButton.open .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -6px);
+        }
+
+        /* --- PAGE-SPECIFIC STYLES --- */
+        .question-screen { transition: all 0.3s ease; }
+        .fade-in { animation: fadeIn 0.5s; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .progress-bar { height: 6px; transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+        select {
+            -webkit-appearance: none; -moz-appearance: none; appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat; background-position: right 0.75rem center; background-size: 1.25rem;
+        }
+        .dark select {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col relative bg-gradient-to-br from-purple-600 to-indigo-700">
+
+<header class="sticky top-0 z-50 bg-purple-800/80 backdrop-blur-md shadow-sm">
+    <div class="container mx-auto px-4 py-3">
+        <div class="flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2">
+                <img src="https://huggingface.co/spaces/DjayChucko/EnablingSales/resolve/main/images/Scaleway-Logomark-White.png" alt="Logo" class="h-8 mr-2">
+                <span class="text-xl font-bold text-white font-heading">McGPT</span>
+            </a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="value-mapper.html" class="nav-link py-2 px-1 text-white hover:text-primary transition-colors">Mapper</a>
+                <a href="intel.html" class="nav-link py-2 px-1 text-white hover:text-primary transition-colors">Products</a>
+                <a href="scorecard.html" class="nav-link py-2 px-1 text-white hover:text-primary transition-colors">Scorecard</a>
+                <a href="strategy.html" class="nav-link py-2 px-1 text-white hover:text-primary transition-colors">Method</a>
+                <a href="academy.html" class="nav-link py-2 px-1 text-white hover:text-primary transition-colors">Academy</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <button id="themeToggle" class="p-2 rounded-full text-white hover:bg-white/20">
+                    <i data-feather="moon" class="hidden dark:block"></i>
+                    <i data-feather="sun" class="block dark:hidden"></i>
+                </button>
+                <button id="mobileMenuButton" class="md:hidden flex flex-col space-y-1.5 p-2 z-50 bg-[#9B5CEB] rounded-lg">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div id="mobileMenu" class="hidden fixed inset-0 z-40 bg-purple-900 bg-opacity-95 backdrop-blur-sm">
+    <div class="flex flex-col items-center justify-center h-full space-y-8">
+        <a href="index.html" class="nav-link text-3xl text-white">Home</a>
+        <a href="value-mapper.html" class="nav-link text-3xl text-white">Mapper</a>
+        <a href="intel.html" class="nav-link text-3xl text-white">Products</a>
+        <a href="scorecard.html" class="nav-link text-3xl text-white">Scorecard</a>
+        <a href="strategy.html" class="nav-link text-3xl text-white">Method</a>
+        <a href="academy.html" class="nav-link text-3xl text-white">Academy</a>
+    </div>
+</div>
+<div id="app" class="relative overflow-hidden flex-1">
+    <div id="industry-screen" class="question-screen flex justify-center items-center p-4 text-white">
+        <div class="max-w-2xl mx-auto w-full text-center" data-aos="fade-up">
+            <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-2 shadow-lg"><img src="https://huggingface.co/spaces/DjayChucko/EnablingSales/resolve/main/images/MEDDICC%20Scorecard%20Logo.png" alt="MEDDICC Logo" class="w-14 h-10"></div>
+            <h1 class="text-3xl font-bold mb-2 text-white">MEDDICC Scorecard</h1>
+           
+<p class="text-purple-200 font-light text-lg">Select the customer's industry and current deal stage</p>
+            <div class="mt-6 mb-6 grid sm:grid-cols-2 gap-4">
+                <div class="relative"><select id="industry" class="w-full p-3 bg-white/20 border-2 border-purple-300 rounded-xl text-white focus:ring-2 focus:ring-white focus:outline-none appearance-none"><option value="" disabled selected>Select an Industry</option><option value="FSI">FSI (Financial Services)</option><option value="Healthcare">Healthcare</option><option value="Public Sector & Education">Public Sector & Education</option><option value="Retail and Ecommerce">Retail and Ecommerce</option><option value="Tech (SaaS)">Tech (SaaS)</option><option value="Cyber">Cyber</option><option value="Media and Entertainment">Media and Entertainment</option><option value="Manufacturing">Manufacturing</option><option value="Energy">Energy</option><option value="Logistics">Logistics</option><option value="Transport">Transport</option><option value="Startups">Startups</option></select></div>
+                <div class="relative"><select id="sales-stage" class="w-full p-3 bg-white/20 border-2 border-purple-300 rounded-xl text-white focus:ring-2 focus:ring-white focus:outline-none appearance-none"><option value="" disabled selected>Select Sales Stage</option><option value="Early Stage">Early Stage</option><option value="Evaluation / PoC">Evaluation / PoC</option><option value="Closing">Closing</option></select></div>
+            </div>
+            <button id="start-btn" disabled class="w-full py-3 bg-white text-purple-700 font-semibold rounded-xl shadow-lg hover:bg-gray-100 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"><span>Start Qualification</span><i data-feather="arrow-right" class="w-5 h-5"></i></button>
+        </div>
+    </div>
+    <div id="question-screens" class="hidden"><div class="fixed top-16 left-0 right-0 z-10 bg-gray-100 dark:bg-gray-900"><div class="h-1.5 bg-gray-200 dark:bg-gray-700"><div id="progress-bar" class="progress-bar bg-purple-600 h-full rounded-r-full"></div></div></div></div>
+    <div id="results-screen" class="question-screen py-8 px-4 sm:px-6 bg-gray-100 dark:bg-gray-900 hidden overflow-y-auto">
+        <div class="max-w-4xl mx-auto w-full" data-aos="fade-in">
+            <div class="text-center mb-6"><div class="w-20 h-20 bg-white dark:bg-gray-800 border-4 border-purple-500 rounded-full flex items-center justify-center mx-auto mb-4"><span id="score-percentage" class="text-3xl font-bold text-purple-600 dark:text-purple-400">0%</span></div><h2 id="score-message" class="text-xl font-semibold mt-2 text-gray-800 dark:text-gray-200"></h2></div>
+            <div class="mb-6"><div class="flex items-center mb-4"><div class="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center mr-3"><i data-feather="zap" class="text-white w-4 h-4"></i></div><h3 class="text-xl font-bold text-gray-800 dark:text-white">Executive Summary</h3></div><div id="executive-summary" class="bg-white dark:bg-gray-800 p-5 rounded-xl shadow-md"></div></div>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div><div class="flex items-center mb-4"><div class="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center mr-3"><i data-feather="info" class="text-white w-4 h-4"></i></div><h3 class="text-xl font-bold text-gray-800 dark:text-white">Industry Insights</h3></div><div id="industry-insights" class="bg-white dark:bg-gray-800 p-5 rounded-xl shadow-md"></div></div>
+                <div><div class="flex items-center mb-4"><div class="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center mr-3"><i data-feather="bar-chart-2" class="text-white w-4 h-4"></i></div><h3 class="text-xl font-bold text-gray-800 dark:text-white">Detailed Analysis</h3></div><div id="score-breakdown" class="space-y-4"></div></div>
+            </div>
+            <div class="mt-6"><button id="restart-quiz" class="w-full py-3 bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold rounded-xl shadow-lg hover:from-purple-700 hover:to-indigo-700 transition-all transform hover:scale-105 flex items-center justify-center space-x-2"><i data-feather="refresh-cw" class="w-5 h-5"></i><span>Start New Scorecard</span></button></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // --- Mobile Menu Toggle ---
+    const mobileMenuButton = document.getElementById('mobileMenuButton');
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+        mobileMenuButton.classList.toggle('open');
+        document.body.classList.toggle('overflow-hidden');
+    });
+
+    // --- Theme Toggle ---
+    const themeToggle = document.getElementById('themeToggle');
+    const html = document.documentElement;
+    themeToggle.addEventListener('click', () => {
+        html.classList.toggle('dark');
+        localStorage.theme = html.classList.contains('dark') ? 'dark' : 'light';
+    });
+    // Set initial theme
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        html.classList.add('dark');
+    } else {
+        html.classList.remove('dark');
+    }
+
+    // --- Set Active Nav Link ---
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-link').forEach(link => {
+        const linkHref = link.getAttribute('href');
+        if (linkHref === currentPage) {
+            link.classList.add('active');
+        } else {
+            link.classList.remove('active');
+        }
+    });
+
+    // --- Feather Icons ---
+    feather.replace();
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        AOS.init({ once: true, duration: 600 });
+        
+        const app = {
+            state: { currentQuestion: 0, industry: '', salesStage: '', answers: [], maxScore: 54 },
+            screens: { industry: document.getElementById('industry-screen'), questions: document.getElementById('question-screens'), results: document.getElementById('results-screen') },
+            inputs: { industry: document.getElementById('industry'), salesStage: document.getElementById('sales-stage'), startBtn: document.getElementById('start-btn') },
+            ui: { progressBar: document.getElementById('progress-bar'), scorePercentage: document.getElementById('score-percentage'), scoreMessage: document.getElementById('score-message'), industryInsights: document.getElementById('industry-insights'), scoreBreakdown: document.getElementById('score-breakdown'), executiveSummary: document.getElementById('executive-summary') },
+            buttons: { restart: document.getElementById('restart-quiz') }
+        };
+
+        const questions = [
+            { section: 'PAIN & METRICS', subheading: 'Section 1: The Opportunity', question: 'What is the quantifiable business pain?', answers: [ { text: 'EB agrees on a top-priority pain with a quantified business case (QBC)', score: 9 }, { text: 'Champion agrees on the pain and we are building the business case', score: 6 }, { text: 'Pain is defined but lacks clear metrics and EB involvement', score: 3 }, { text: 'Pain is vague and no metrics have been discussed', score: 0 } ] },
+            { section: 'CHAMPION & EB', subheading: 'Section 1: The Opportunity', question: 'How strong is our relationship with the key personas?', answers: [ { text: 'Our Champion is selling on our behalf and we have EB engagement', score: 9 }, { text: 'We have a tested Champion who is providing access to power', score: 6 }, { text: 'We have a potential Champion but they are not yet tested', score: 3 }, { text: 'No Champion or Economic Buyer identified', score: 0 } ] },
+            { section: 'DECISION PROCESS & CRITERIA', subheading: 'Section 2: The Decision', question: 'How will the decision be made and what are the requirements?', answers: [ { text: 'We influenced the criteria and the process is confirmed with the EB', score: 9 }, { text: 'We know the process and criteria and believe we are aligned', score: 6 }, { text: 'The decision process or criteria are partially understood', score: 3 }, { text: 'The process and criteria are a black box', score: 0 } ] },
+            { section: 'COMPETITION & BLOCKERS', subheading: 'Section 2: The Decision', question: 'What internal and external forces can stop this deal?', answers: [ { text: 'We are seen as the preferred vendor and all blockers have a mitigation plan', score: 9 }, { text: 'Competition is known, traps are set, and some blockers are identified', score: 6 }, { text: 'We know of competitors but have not identified potential blockers', score: 3 }, { text: 'Competitive landscape and internal blockers are unknown', score: 0 } ] },
+            { section: 'PAPER PROCESS', subheading: 'Section 3: The Logistics', question: 'How aligned are we on the procurement and legal process?', answers: [ { text: 'Pricing, contract, and security review process are fully confirmed', score: 9 }, { text: 'We have had initial discussions on budget and the paper process', score: 6 }, { text: 'A budget is confirmed but the paper process has not been discussed', score: 3 }, { text: 'Budget and procurement process are unknown', score: 0 } ] },
+            { section: 'IMPLEMENTATION PLAN', subheading: 'Section 3: The Logistics', question: 'Is there a clear, agreed-upon plan for success after signing?', answers: [ { text: 'All stakeholders have agreed to a formal, joint implementation plan', score: 9 }, { text: 'We have shared a draft implementation plan with our Champion', score: 6 }, { text: 'Implementation has been discussed but no formal plan exists', score: 3 }, { text: 'The post-sale process has not been discussed', score: 0 } ] }
+        ];
+
+        const scoreMessages = { 'Closing': { 14: "Low Probability. More qualification of Why Now? and Why Us? required.", 39: "Medium Probability. More qualification Why Now? to quantify the business case.", 60: "High Probability. Focus on Why Us? loop in Product teams, set traps, kill blockers.", 101: "Commit. Be cautious. Expect last minute blockers, seek Scaleway Executive Sponsors." }, 'Early Stage': { 14: "Low Potential. More discovery needed to find a compelling business pain.", 39: "Medium Potential. Good start. Focus on building the business case and identifying a Champion.", 60: "High Potential. Strong signal. Engage more stakeholders and define success criteria for an evaluation.", 101: "Very High Potential. Excellent qualification. Prepare to move to a formal evaluation or PoC." }, 'Evaluation / PoC': { 14: "Low Confidence. This deal is not ready for an evaluation. Engage customer to define success metrics of any PoC. Re-qualify the business case.", 39: "Medium Confidence. The business case is weak. Ensure the PoC has clear, agreed-upon success metrics.", 60: "High Confidence. The PoC is well-positioned. Focus on technical validation and neutralizing blockers.", 101: "Very High Confidence. A successful evaluation should lead to a close. Start planning the paper process." } };
+        
+        const industryInsights = { 
+            'FSI': 'Financial services organizations prioritize security, data sovereignty, and high-level compliance certifications like SecNumCloud. They are typically interested in high-performance computing (HPC) for risk modeling, AI and machine learning for fraud detection, and highly available, managed database solutions for transactional systems. Secure private networks and robust disaster recovery solutions are also key considerations to ensure business continuity and protect sensitive financial data.',
+            'Healthcare': 'The healthcare sector is driven by the need to protect sensitive patient data, making compliance certifications like HDS (Health Data Hosting) and HIPAA paramount. Organizations often seek secure object storage for medical imaging archives (PACS), AI/ML services for diagnostic imaging analysis, and managed databases for electronic health records (EHR). Private networking and robust encryption are crucial for creating a secure environment for processing and storing personal health information.',
+            'Public Sector & Education': 'Government, public services, and educational institutions focus on data sovereignty, cost-efficiency, and security. They often require cloud platforms with specific national certifications to ensure data remains within jurisdictional boundaries. Common use cases include hosting citizen-facing web applications, creating virtual labs and e-learning platforms with on-demand GPU instances, and leveraging scalable object storage for archiving public records and research data.',
+            'Retail and Ecommerce': 'Retailers and e-commerce platforms need scalable, resilient, and high-performance infrastructure to handle fluctuating traffic, especially during peak shopping seasons. Key technologies include managed Kubernetes for containerized microservices, auto-scaling compute instances, and Content Delivery Networks (CDNs) to accelerate website loading times globally. They also heavily utilize data analytics and AI/ML services for customer personalization, demand forecasting, and recommendation engines.',
+            'Tech (SaaS)': 'SaaS companies and tech firms look for developer-friendly tools that accelerate innovation and reduce operational overhead. They are heavy users of managed Kubernetes (Kapsule) and serverless functions (Kore) to build scalable, cloud-native applications. Managed databases, object storage, and integrated CI/CD tooling are essential for rapid development cycles. A predictable pricing model and powerful, easy-to-use APIs are also critical for this developer-centric audience.',
+            'Cyber': 'Cyber security firms require isolated, high-performance environments to analyze threats and run security applications. They are interested in bare metal servers for maximum performance and control, virtual private clouds (VPCs) for network segmentation, and powerful compute instances for running security information and event management (SIEM) platforms. Scalable object storage is also used for cost-effective, long-term retention of log data for forensic analysis.',
+            'Media and Entertainment': 'Media companies handle massive datasets and require infrastructure that can process and deliver content at scale. They typically leverage petabyte-scale object storage for media archives and video-on-demand (VOD) libraries. High-performance GPU instances are crucial for video transcoding, rendering, and AI-powered content analysis. A global CDN is essential for ensuring low-latency streaming and fast content delivery to audiences worldwide.',
+            'Manufacturing': 'In manufacturing, the focus is on leveraging data from the factory floor to optimize production and reduce downtime. This sector is increasingly adopting Internet of Things (IoT) platforms to connect and manage industrial sensors and equipment. Cloud-based data analytics and AI/ML services are used for predictive maintenance, quality control, and supply chain optimization. Secure and scalable object storage is also needed for archiving vast amounts of historical production data.',
+            'Energy': 'The energy sector uses cloud technologies to analyze vast datasets for exploration, optimize grid performance, and forecast demand. High-performance computing (HPC) and GPU instances are essential for running complex geological simulations and AI models. IoT platforms are used to build smart grids and monitor remote assets. Data analytics services are key to processing sensor data and improving operational efficiency and sustainability.',
+            'Logistics': 'Logistics and supply chain companies rely on real-time data to optimize operations and improve efficiency. They utilize cloud services for IoT fleet management, real-time tracking of shipments, and data analytics to predict delivery times. AI and machine learning are employed for route optimization and demand forecasting, helping to reduce fuel costs and improve service reliability. Scalable databases are needed to manage the high volume of tracking and inventory data.',
+            'Transport': 'The transportation industry uses the cloud to enhance operational efficiency and passenger experience. Key technologies include IoT for fleet management and predictive maintenance on vehicles like trains and planes. Data analytics platforms are used to analyze passenger flow and optimize scheduling. AI services can power smart assistants for travelers and improve real-time traffic management systems for urban transport networks.',
+            'Startups': 'Startups need to build and scale quickly with minimal upfront investment and operational burden. They thrive on pay-as-you-go pricing and developer-friendly managed services. Key technologies include serverless functions and containers (Kubernetes) to build scalable applications without managing servers, managed databases to simplify setup and maintenance, and object storage for a cost-effective way to store user data and application assets. The ability to scale resources on-demand is critical to support rapid growth.'
+        };
+        
+        const summarySnippets = { 'PAIN & METRICS': 'Solidify the business case by quantifying the pain with the Economic Buyer.', 'CHAMPION & EB': 'Test your Champion and leverage them for greater access to the Economic Buyer.', 'DECISION PROCESS & CRITERIA': 'Influence the decision criteria and get the formal process in writing.', 'COMPETITION & BLOCKERS': 'Set competitive traps and proactively identify all potential deal blockers.', 'PAPER PROCESS': 'De-risk the closing stage by confirming the budget source and procurement process early.', 'IMPLEMENTATION PLAN': 'Co-create a success plan with the customer to show value beyond the signature.' };
+        
+        const industrySpecificAdvice = { 'FSI': { 'PAIN & METRICS': 'Frame pain around compliance...', 'PAPER PROCESS': 'The legal review is rigorous...' }, 'Healthcare': { 'PAIN & METRICS': 'Pain is tied to HIPAA...', 'DECISION PROCESS & CRITERIA': 'Criteria weighs heavily on security...' }, 'Tech (SaaS)': { 'COMPETITION & BLOCKERS': 'The SaaS market is crowded...', 'IMPLEMENTATION PLAN': 'Offer a "quick start" plan...' } };
+
+        // --- MAPPING FOR LOW SCORE RECOMMENDATION LINKS ---
+        // This now correctly maps to the IDs found in academy.html
+        const lowScoreLinks = {
+            'PAIN & METRICS': 'academy.html#discovery-qualification',
+            'CHAMPION & EB': 'academy.html#stakeholder-mapping',
+            'DECISION PROCESS & CRITERIA': 'academy.html#qualify-meddicc',
+            'COMPETITION & BLOCKERS': 'academy.html#proposals',
+            'PAPER PROCESS': 'academy.html#evaluation-justification',
+            'IMPLEMENTATION PLAN': 'academy.html#solution-architects'
+        };
+
+        function checkSelections() { app.inputs.startBtn.disabled = !(app.state.industry && app.state.salesStage); }
+        app.inputs.industry.addEventListener('change', (e) => { app.state.industry = e.target.value; checkSelections(); });
+        app.inputs.salesStage.addEventListener('change', (e) => { app.state.salesStage = e.target.value; checkSelections(); });
+        app.inputs.startBtn.addEventListener('click', () => { app.screens.industry.classList.add('hidden'); app.screens.questions.classList.remove('hidden'); renderQuestion(app.state.currentQuestion); });
+        app.buttons.restart.addEventListener('click', resetQuiz);
+
+        function resetQuiz() {
+            app.state = { currentQuestion: 0, industry: '', salesStage: '', answers: [], maxScore: 54 };
+            app.screens.results.classList.add('hidden');
+            app.screens.questions.classList.add('hidden');
+            app.screens.industry.classList.remove('hidden');
+            app.inputs.industry.value = "";
+            app.inputs.salesStage.value = "";
+            app.inputs.startBtn.disabled = true;
+            feather.replace();
+        }
+
+        function renderQuestion(index) {
+            if (index >= questions.length) { return showResults(); }
+            const question = questions[index];
+            app.ui.progressBar.style.width = `${(index / questions.length) * 100}%`;
+            const screen = document.createElement('div');
+            screen.className = `question-screen flex flex-col justify-center p-6 bg-gradient-to-br from-purple-600 to-indigo-700 text-white fade-in`;
+            screen.innerHTML = `<div class="max-w-2xl mx-auto w-full"><div class="mb-4 text-center"><p class="text-xs font-bold tracking-wider uppercase text-purple-200 mb-2">${question.subheading}</p><span class="text-sm font-medium text-purple-300 dark:text-purple-400">${question.section}</span><h2 class="text-2xl font-bold mt-1 mb-2 text-white">${question.question}</h2></div><div class="mb-6"><div class="relative"><select id="answer-select" class="w-full p-3 bg-white/20 border-2 border-purple-300 rounded-lg focus:ring-2 focus:ring-white text-white focus:outline-none"><option value="" disabled selected>Select an answer</option>${question.answers.map(a => `<option value="${a.score}" class="bg-gray-800 text-white">${a.text}</option>`).join('')}</select></div></div><div class="flex items-center gap-4"><button id="back-btn" class="w-1/3 py-3 bg-white/20 text-white rounded-lg font-semibold shadow-md hover:bg-white/30">Back</button><button id="next-btn" disabled class="w-2/3 py-3 bg-white text-purple-700 rounded-lg font-semibold shadow-md disabled:opacity-50">${index === questions.length - 1 ? 'Finish' : 'Next'}</button></div></div>`;
+            app.screens.questions.innerHTML = ''; app.screens.questions.appendChild(screen); feather.replace();
+            const select = document.getElementById('answer-select'), next = document.getElementById('next-btn'), back = document.getElementById('back-btn');
+            select.addEventListener('change', () => next.disabled = !select.value);
+            next.addEventListener('click', () => { app.state.answers.push({ section: question.section, answer: select.options[select.selectedIndex].text, score: parseInt(select.value) }); app.state.currentQuestion++; renderQuestion(app.state.currentQuestion); });
+            back.addEventListener('click', () => { if (index > 0) { app.state.currentQuestion--; app.state.answers.pop(); renderQuestion(app.state.currentQuestion); } else { resetQuiz(); } });
+        }
+
+        function showResults() {
+            app.screens.questions.classList.add('hidden');
+            app.screens.results.classList.remove('hidden');
+            app.screens.results.classList.add('bg-gradient-to-br', 'from-purple-600', 'to-indigo-700', 'text-white');
+            app.screens.results.classList.remove('bg-gray-100', 'dark:bg-gray-900', 'text-gray-800', 'dark:text-gray-200');
+
+            AOS.refresh();
+            const totalScore = app.state.answers.reduce((sum, ans) => sum + ans.score, 0);
+            const percentage = Math.max(0, Math.round((totalScore / app.state.maxScore) * 100));
+            app.ui.scorePercentage.textContent = `${percentage}%`;
+            const stageMessages = scoreMessages[app.state.salesStage] || scoreMessages['Early Stage'];
+            let msg = '';
+            if (percentage <= 14) msg = stageMessages[14]; else if (percentage <= 39) msg = stageMessages[39]; else if (percentage <= 60) msg = stageMessages[60]; else msg = stageMessages[101];
+            app.ui.scoreMessage.innerHTML = `<span class="block">${msg}</span>`;
+            
+            app.ui.scoreMessage.classList.remove('text-gray-800', 'dark:text-gray-200');
+            app.ui.scoreMessage.classList.add('text-white');
+
+            app.ui.industryInsights.innerHTML = `<p>${industryInsights[app.state.industry]}</p>`;
+            app.ui.industryInsights.classList.remove('bg-white', 'dark:bg-gray-800');
+            app.ui.industryInsights.classList.add('bg-white/10', 'text-white', 'backdrop-blur-sm');
+
+            app.ui.executiveSummary.innerHTML = ''; 
+            app.ui.executiveSummary.classList.remove('bg-white', 'dark:bg-gray-800');
+            app.ui.executiveSummary.classList.add('bg-white/10', 'text-white', 'backdrop-blur-sm');
+
+            app.ui.scoreBreakdown.innerHTML = '';
+
+            app.state.answers.forEach(answer => {
+                let recommendationHTML = '';
+                // Condition to show recommendation is a score less than 5 (i.e., 0 or 3)
+                if (answer.score < 5) {
+                    let advice = industrySpecificAdvice[app.state.industry]?.[answer.section] || summarySnippets[answer.section] || 'Focus on improving this area.';
+                    const link = lowScoreLinks[answer.section] || 'academy.html'; // Direct lookup from the corrected link map
+                    recommendationHTML = `<div class="mt-3 pt-3 border-t border-purple-400 bg-red-800/20 p-3 rounded-b-lg -m-4 mt-4"><p class="text-sm font-medium text-red-200"><strong>Recommendation:</strong> ${advice} <a href="${link}" target="_blank" class="font-bold underline hover:text-red-100">learn more</a></p></div>`;
+                }
+                const scoreRatio = answer.score / 9;
+                let scoreColor = 'text-red-300';
+                if (scoreRatio >= 0.7) scoreColor = 'text-green-300'; else if (scoreRatio >= 0.4) scoreColor = 'text-yellow-300';
+
+                app.ui.scoreBreakdown.insertAdjacentHTML('beforeend', `<div class="bg-white/10 p-4 rounded-lg shadow-sm backdrop-blur-sm"><div class="flex justify-between items-start mb-2"><h4 class="font-medium text-white">${answer.section}</h4><span class="font-bold ${scoreColor}">${answer.score}/9</span></div><p class="text-sm text-purple-200">${answer.answer}</p>${recommendationHTML}</div>`);
+            });
+            generateExecutiveSummary(app.state.answers, percentage, app.state.salesStage);
+            feather.replace();
+        }
+
+        function generateExecutiveSummary(answers, overallScore, salesStage) {
+            let weaknesses = [], summaryHTML = '<ul class="space-y-3 text-purple-100">';
+            const metricsMotive = answers.find(a => a.section === 'PAIN & METRICS');
+            const sorted = [...answers].sort((a, b) => a.score - b.score);
+            if (metricsMotive && metricsMotive.score < 5) { weaknesses.push(metricsMotive); const next = sorted.find(a => a.section !== 'PAIN & METRICS'); if (next && weaknesses.length < 2) weaknesses.push(next); } else { weaknesses = sorted.slice(0, 2); }
+            const strength = sorted[sorted.length - 1];
+            if (overallScore >= 60 && strength.score >= 7) { summaryHTML += `<li class="flex items-start"><span class="mr-2 text-green-300">✅</span><span><strong>Strength:</strong> The deal is well-positioned in <strong>${strength.section}</strong>.</span></li>`; }
+            weaknesses.forEach(weak => { const snippet = summarySnippets[weak.section] || 'This area needs to be addressed.'; summaryHTML += `<li class="flex items-start"><span class="mr-2 text-red-300">🔴</span><span><strong>Urgent Focus: ${weak.section}</strong>. ${snippet}</span></li>`; });
+            summaryHTML += '</ul>';
+            let strategicMessage = '';
+            if (overallScore <= 19) { strategicMessage = "Okay if early, but more qualification is required."; }
+            else { strategicMessage = "Do you agree with this score? Do you know what to do next to improve it? Check below for some guidance"; }
+            summaryHTML += `<div class="mt-4 pt-4 border-t border-purple-400"><p class="text-base font-medium text-purple-200">${strategicMessage}</p></div>`;
+            app.ui.executiveSummary.innerHTML = summaryHTML;
+        }
+    });
+</script>
+
+</body>
+</html>
