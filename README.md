@@ -9,5 +9,5 @@ tags:
   - deepsite-v3
 ---
 
-# Welcome to your new DeepSite project!
-This project was created with [DeepSite](https://deepsite.hf.co).
+# Strategic tools enabling ELITE sales!
+All information is commercially confidential
