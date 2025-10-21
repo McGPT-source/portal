@@ -102,7 +102,7 @@
             <div class="text-center">
                 <h1 class="text-3xl sm:text-4xl font-heading font-extrabold text-gray-800 dark:text-white mb-3 leading-tight">Pod Value Mapper</h1>
                 <div class="flex justify-center mb-6">
-                   <img src="/images/pod-mapper.png" alt="Pod Value Mapper" class="h-48 w-auto">
+                   <img src="/images/publiceducationpod-illustration-transparent.png" alt="Pod Value Mapper" class="h-48 w-auto">
                 </div>
             </div>
             <div class="max-w-md mx-auto">
@@ -237,4 +237,155 @@
             dq6: "How do you ensure that only authorized personnel can access Protected Health Information (PHI) across your different cloud services?", pbo6: "With compliance being paramount, strong access control is a must. Can I show you how our IAM tools are used to enforce strict permissions on sensitive health data?"
         },
         "E-commerce & Retail": {
-            valueDrivers: "Value Drivers: This industry requires high availability, scalability to handle traffic spikes (e.g.,
+            valueDrivers: "Value Drivers: This industry requires high availability, scalability to handle traffic spikes (e.g., Black Friday), and data analytics for personalization. Product Focus: Kubernetes Kapsule, Serverless Containers, Load Balancers, Managed Databases, Serverless SQL Database, Transaction Emails, Object Storage.",
+            dq1: "How quickly and cost-effectively can you scale your infrastructure to handle Black Friday-level traffic spikes without over-provisioning for the rest of the year?", pbo1: "Your success depends on handling peak traffic seamlessly. Would it be helpful to see how our clients use Kubernetes Kapsule and Load Balancers to auto-scale for these events?",
+            dq2: "What impact does page load time and database query speed have on your cart abandonment rate, especially during peak hours?", pbo2: "We've helped e-commerce sites boost conversion rates by improving performance. Would a brief overview of how our Managed Databases with Redis for caching can help be valuable?",
+            dq3: "As your application grows into a microservices architecture, how much of your team's time is spent managing the complexity of your Kubernetes environment versus building new features?", pbo3: "Your focus on Kapsule suggests you value efficiency. Many of our retail clients use our managed Kubernetes to free up their developers. Is developer productivity a key metric for you?",
+            dq4: "How are you storing and serving rich media like product images and videos to ensure they load quickly for all users?", pbo4: "Fast-loading product images are crucial. Can I show you how our Object Storage, combined with a CDN, provides a high-performance, cost-effective solution?",
+            dq5: "What is your process for sending transactional emails for things like order confirmations and shipping updates, and how do you ensure deliverability?", pbo5: "Reliable email delivery is essential for customer trust. Would a quick look at our Transaction Emails service be beneficial for your operations?",
+            dq6: "How are you analyzing sales and user behavior data, and what are the challenges of running complex queries on those large datasets?", pbo6: "Data analysis drives growth. Many of our clients are turning to our Serverless SQL Database to run powerful analytics without the cost of managing a data warehouse. Is that something you're exploring?"
+        },
+        "Media & Entertainment": {
+            valueDrivers: "Value Drivers: Characterized by massive file sizes (video, graphics), global content distribution, and intensive processing workloads like rendering and transcoding. Product Focus: Object Storage, GPU Instances, Bare Metal, Edge Computing, Private Network.",
+            dq1: "When you look at your overall rendering and distribution pipeline, where are you seeing the biggest bottlenecks in terms of data transfer speeds and compute costs?", pbo1: "Many studios are looking to cut rendering costs. Can I show you how our S3-compatible Object Storage and powerful GPU instances achieve that?",
+            dq2: "How do you manage collaborative workflows between remote creative teams, especially when dealing with terabytes of raw footage stored in Object Storage?", pbo2: "We specialize in helping remote creative teams collaborate on massive files. Would you be open to hearing how our high-speed Private Network securely connects their workstations to your central storage?",
+            dq3: "What is your strategy for delivering video content to a global audience while minimizing latency and buffering?", pbo3: "Latency is the enemy of a good viewing experience. Can I briefly explain how our Edge Computing solutions can be used to build a powerful CDN and cache content closer to your users?",
+            dq4: "What are the performance requirements for your transcoding workloads, and are you using dedicated hardware for that today?", pbo4: "For heavy media processing, nothing beats dedicated hardware. Would you be open to exploring how our Bare Metal servers can accelerate your transcoding pipeline?",
+            dq5: "How do you ensure the long-term, cost-effective archival of your master files and media assets against data loss?", pbo5: "Protecting your core assets is critical. Can I share how our multi-region Object Storage solutions are designed for maximum data durability and disaster recovery?",
+            dq6: "Are you facing unexpected costs when moving large media files between different services or out to the internet?", pbo6: "We help media companies avoid unpredictable data transfer fees. Is our transparent and competitive egress pricing something you'd be interested in discussing?"
+        },
+        "Gaming": {
+            valueDrivers: "Value Drivers: Success in this industry hinges on low latency, global availability, and robust protection against attacks. Product Focus: Bare Metal, Elastic Metal, DDoS Protection, Load Balancers, Edge Computing, Managed Databases.",
+            dq1: "For your game servers, what is the key trade-off you are currently making between achieving consistent, low-latency performance and managing costs?", pbo1: "We find many studios want to balance cost and performance. Can I share how our Bare Metal and Elastic Metal servers are designed for exactly that?",
+            dq2: "How are you protecting your game servers from DDoS attacks that can ruin the player experience and cause churn?", pbo2: "DDoS protection is non-negotiable for online games. Would a quick overview of how our included protection ensures high availability be useful for your team?",
+            dq3: "What is your strategy for deploying game servers closer to your players globally to reduce ping times and improve gameplay?", pbo3: "Minimizing ping is everything. Are you currently exploring how Edge Computing can help you deploy servers closer to your player base?",
+            dq4: "How are you managing backend services like player databases, leaderboards, and matchmaking to ensure they are always available and responsive?", pbo4: "A game's backend is its backbone. Is ensuring high availability for your Managed Databases and matchmaking services a top priority for your operations team?",
+            dq5: "How does your infrastructure support rapid scaling for a new game launch or a major content update to avoid frustrating your players with queues?", pbo5: "A smooth launch is critical for a new game's success. May I show you how our auto-scaling infrastructure and Load Balancers ensure a seamless experience for players?",
+            dq6: "What are the biggest friction points for your developers when it comes to deploying and managing your game's infrastructure?", pbo6: "Our customers often mention they appreciate a seamless, developer-centric experience. Are you open to a quick overview of how our tools simplify deployment and management?"
+        },
+        "Public Education & Research": {
+            valueDrivers: "Value Drivers: Often budget-conscious, this sector needs access to high-performance computing for research and scalable platforms for learning applications. They frequently operate in a hybrid model with on-campus data centers. Product Focus: GPU Instances, High-Memory Instances, Object Storage, API & CLI, Terraform Provider, Marketplace.",
+            dq1: "If budget weren't a constraint, what scientific or research challenges would your team tackle if they had access to more on-demand GPU and HPC resources?", pbo1: "We can help make powerful tools more accessible. Can I briefly explain how our GPU and High-Memory Instances are used on-demand in secure HPC environments?",
+            dq2: "How do you provide students and researchers with access to modern data science tools and environments while managing costs and security?", pbo2: "Empowering students and researchers is key. Would you be interested to see how universities use our Marketplace and Managed Kubernetes to provide secure, sandboxed learning environments?",
+            dq3: "What is your strategy for long-term storage of critical research data in a way that is both affordable and easily accessible for future projects?", pbo3: "Research data is invaluable. Can I show you how our Object Storage provides a highly durable and cost-effective solution for long-term data archival?",
+            dq4: "How much manual effort is involved when your IT staff or researchers need to provision and configure infrastructure for new experiments?", pbo4: "Your focus on developer tools is interesting. Many of our research clients use our Terraform Provider to automate infrastructure deployment. Is creating repeatable experiments a goal for your team?",
+            dq5: "How do you manage user access and permissions across various research projects to ensure data is secure but collaboration is still possible?", pbo5: "We find that managing access in a collaborative research environment can be complex. Is using a robust IAM solution to simplify this a challenge you're working to solve?",
+            dq6: "Are you concerned about long-term vendor lock-in or unpredictable data egress costs, especially with large research datasets?", pbo6: "Many institutions are concerned about rising data costs. Would it be helpful to discuss how our open-source ecosystem and transparent pricing helps avoid those challenges?"
+        },
+        "Government & Public Sector": {
+            valueDrivers: "Value Drivers: Prioritizes data sovereignty, security, long-term archival, and compliance with public sector regulations. Hybrid cloud is a very common deployment pattern. Product Focus: Compliance Tools, IAM, VPC, Private Network, Dedibox, Bare Metal, Object Storage.",
+            dq1: "In your digital transformation roadmap, what are the primary risks associated with relying on non-European cloud providers for sensitive citizen data?", pbo1: "As a European provider, data sovereignty is central to our mission. Do you mind if I share how we address those requirements with our certified, local infrastructure?",
+            dq2: "How challenging is it for your organization to pursue certifications like SecNumCloud while securely managing hybrid connections to your existing networks?", pbo2: "Meeting public sector standards is non-negotiable. Can I show you how our SecNumCloud-ready solutions and Private Network are designed for this?",
+            dq3: "What is your strategy for modernizing legacy applications while ensuring they are physically isolated and meet the highest standards of security?", pbo3: "Modernizing legacy systems is a common challenge. Would you be interested in how agencies are using our Dedibox and Bare Metal servers to create secure, single-tenant environments?",
+            dq4: "How do you ensure the long-term, immutable archival of public records in a way that is both cost-effective and compliant with government mandates?", pbo4: "Archival of public records is critical. May I show you how our Object Storage with immutability features helps public agencies meet their compliance needs?",
+            dq5: "How do you manage access and permissions across various departments and services to ensure a strict least-privilege model?", pbo5: "With security being paramount, strong access control is a must. Can I show you how our IAM tools are used to enforce granular permissions across your organization?",
+            dq6: "How do you manage and forecast cloud expenditures to stay within strict public-sector budgets, especially when dealing with data transfer costs?", pbo6: "Budget predictability is essential in the public sector. Can I share how our transparent pricing on services like VPC and bandwidth helps our government clients avoid surprise costs?"
+        },
+        "Cybersecurity": {
+             valueDrivers: "Value Drivers: This industry builds tools to protect others. They need raw, isolated, and highly configurable environments for research, analysis, and product development. Product Focus: Bare Metal, VPC, Private Network, IP Address Manager, Logs & Metrics, Kubernetes Kapsule.",
+             dq1: "How do you provide your analysts with secure, isolated environments for malware analysis or security research without risking your core infrastructure?", pbo1: "We can provide on-demand, fully isolated Bare Metal servers for sandboxing. Is having access to ephemeral, secure research environments a need for your team?",
+             dq2: "What are the biggest challenges in creating complex network sandboxes to safely analyze threats and replicate customer environments?", pbo2: "A secure foundation is key. Would you be open to seeing how our Bare Metal combined with VPC and our IP Address Manager can simplify the creation of complex research networks?",
+             dq3: "As you scale your security platform, what are the challenges in ingesting and analyzing massive volumes of log data without incurring unpredictable costs?", pbo3: "Many security firms struggle with the cost of data ingestion. Can I show you how our Logs & Metrics services and transparent bandwidth pricing help solve that?",
+             dq4: "How are you running your own scalable, security-as-a-service platforms for your customers?", pbo4: "I see Kubernetes Kapsule is a product focus. Are you interested in how other security companies are using our managed Kubernetes to build their own scalable SaaS offerings?",
+             dq5: "How important is having raw, bare-metal access for digital forensics or for running custom hypervisors without a provider-managed layer?", pbo5: "For deep forensics and custom virtualization, nothing beats Bare Metal. Is having that level of raw control a requirement for your operations?",
+             dq6: "What is your current level of confidence in your existing private networking setup to leverage AI/ML for threat detection while upholding data sovereignty principles?", pbo6: "Data sovereignty is a key defense. Is ensuring your forensic and threat-analysis data stays within a specific jurisdiction a requirement for your operations?"
+        },
+        "Manufacturing": {
+            valueDrivers: "Value Drivers: This sector is heavily invested in on-prem operational technology (OT) and is increasingly adopting cloud for Industrial IoT (IIoT), data analytics, and supply chain optimization. Product Focus: IoT Solutions, Edge Computing, AI Suite, Private Network, Object Storage.",
+            dq1: "What percentage of unscheduled downtime could be saved if you could process IoT sensor data on the factory floor for instant, predictive maintenance?", pbo1: "Processing data at the source is the future. Can I show you how our IoT and Edge Computing solutions are designed for real-time action on the factory floor?",
+            dq2: "What is your strategy for securely connecting your operational technology (OT) environment with your cloud IT infrastructure?", pbo2: "Securing the convergence of IT and OT is a major challenge. Can I share how our Private Network helps create a secure bridge for your IIoT data?",
+            dq3: "How are you leveraging 'digital twin' simulations to optimize production lines, and what are the computational challenges of processing that sensor data?", pbo3: "We see many manufacturers adopting digital twins. Would you be interested to hear how they use our AI Suite and HPC instances to run these complex simulations cost-effectively?",
+            dq4: "What is your long-term plan for storing and analyzing the massive amounts of historical data generated by your IoT sensors?", pbo4: "Historical IoT data is a goldmine for insights. Can I show you how our cost-effective Object Storage is used as a data lake for manufacturing analytics?",
+            dq5: "How are you using computer vision for quality control on the production line, and what are the challenges in deploying those AI models?", pbo5: "AI-powered quality control is a powerful tool. Are you interested in how our AI Suite can help you build and deploy computer vision models right on the factory floor?",
+            dq6: "How are you integrating data from across your supply chain to get a real-time view of your operations?", pbo6: "Supply chain visibility is a significant competitive advantage. Is using a scalable, central data platform to integrate data from multiple sources a current focus for your team?"
+        },
+        "Energy, Logistics & Transport": {
+            valueDrivers: "Value Drivers: These sectors manage vast, geographically distributed assets and rely on data for optimization and predictive maintenance. Product Focus: IoT Solutions, Edge Computing, AI Suite, Object Storage, Serverless SQL Database, Monitoring, Alerting.",
+            dq1: "As you manage distributed assets like vehicles or grid components, what are the biggest challenges in collecting and analyzing real-time telemetry data to optimize performance?", pbo1: "We help companies in your sector turn massive streams of telemetry data into measurable cost savings. Would you be interested in how our IoT and database solutions make that possible?",
+            dq2: "For critical assets like turbines, pipelines, or your vehicle fleet, how are you using data to move from reactive repairs to predictive maintenance?", pbo2: "Predictive maintenance can dramatically reduce operational costs. May I share how our AI Suite is used to build models that predict equipment failure before it happens?",
+            dq3: "When collecting data from remote or mobile assets, what are the challenges related to intermittent connectivity and the cost of sending massive amounts of raw data to the cloud?", pbo3: "Processing data at the edge is key for real-time action and cost savings. Can I show you how our Edge Computing solutions are designed for these kinds of distributed environments?",
+            dq4: "How satisfied are your teams with the speed and cost of running large-scale simulations, whether for grid modeling, logistics optimization, or route planning?", pbo4: "Simulation speed is a real competitive advantage. Can I share how our on-demand GPU instances are used for these high-performance workloads without a large upfront investment?",
+            dq5: "How are you aggregating historical and real-time data to run complex queries for demand forecasting or trend analysis?", pbo5: "Unlocking insights from massive datasets is a common challenge. Would you be interested in how our Serverless SQL Database allows you to run powerful queries without managing servers?",
+            dq6: "What is your strategy for monitoring the health and status of thousands of critical remote assets in real-time?", pbo6: "Real-time visibility is crucial. Can I briefly show you how our Monitoring and Alerting tools are used to keep track of critical remote infrastructure?"
+        },
+        "Technology/SaaS": {
+            valueDrivers: "Value Drivers: These companies are often 'cloud-native' and are power users of cloud services. Their priorities are developer productivity, scalability, reliability, and cost-efficiency. Product Focus: Kubernetes Kapsule, Serverless Containers, API & CLI, Terraform Provider, SDKs, Managed Databases, Serverless SQL Database, Monitoring, Logs & Metrics, Alerting.",
+            dq1: "How much of your engineering time is spent on maintaining infrastructure versus building new product features for your customers?", pbo1: "We help SaaS companies refocus their engineers on product development. Is reducing the burden of infrastructure management with services like Kubernetes Kapsule a priority for you?",
+            dq2: "What is your strategy for managing a multi-tenant architecture to ensure customer data is isolated and your application remains performant for everyone?", pbo2: "Multi-tenancy at scale is complex. Would you be interested to see how our clients use our managed Kubernetes and private networking to build secure, performant SaaS platforms?",
+            dq3: "How do you handle your database needs, and what are the challenges you face with scaling, backups, and maintenance?", pbo3: "Databases can be a huge operational headache. Would you be interested in exploring how our Managed Databases and Serverless SQL Database can offload that work from your team?",
+            dq4: "How are you providing your developers with the tools they need to build, test, and deploy code in an automated and repeatable way?", pbo4: "I see developer tools are a major focus for you. We are committed to a fully automatable cloud via our Terraform provider and robust API. Is improving your CI/CD pipeline a current goal?",
+            dq5: "How are you monitoring your application to ensure you're meeting your SLOs, and what are the challenges of managing your observability stack?", pbo5: "Maintaining uptime is everything for a SaaS business. Can I show you how our integrated Monitoring, Logs, and Alerting tools can simplify your observability strategy?",
+            dq6: "Are you concerned about unpredictable cloud costs, especially related to data egress, as your user base grows?", pbo6: "Many SaaS companies are concerned about rising egress fees. Would it be helpful to discuss how our transparent pricing helps you scale your business predictably?"
+        },
+        "Startup": {
+            valueDrivers: "Value Drivers: Startups need to move fast, stay lean, and build for scale from day one. They heavily favor managed services that reduce operational overhead. Product Focus: Kubernetes Kapsule, Serverless Containers, Managed Databases, Marketplace, Domain & DNS, Transaction Emails, API & CLI, Terraform Provider, Generative APIs.",
+            dq1: "How are you balancing the need to ship features quickly with the need to build a scalable architecture that won't require a total rewrite later?", pbo1: "We see many startups face the 'build fast vs. build right' dilemma. Can I show you how our managed services like Kapsule and Managed Databases help you do both?",
+            dq2: "What is your plan for managing infrastructure costs as your user base grows, and how do you avoid surprise bills related to things like data transfer?", pbo2: "Scaling shouldn't mean unpredictable costs. Would you be open to a quick look at our pricing model, which is designed to be transparent and predictable for startups?",
+            dq3: "Are there any parts of your infrastructure, like your database or container orchestration, that you worry are becoming an operational burden on your small team?", pbo3: "We offer managed services specifically to help startups focus on their product. Is reducing operational overhead with things like Serverless Containers something you're thinking about?",
+            dq4: "How are you thinking about incorporating advanced features, like AI, into your product without a large upfront investment?", pbo4: "I see Generative APIs are a focus for you. Our on-demand GPUs and AI tools are perfect for startups experimenting with AI. Would you be interested in hearing how others are using this to innovate?",
+            dq5: "What is your process for getting your application online, from registering a domain to setting up your core infrastructure?", pbo5: "Getting to market quickly is key. Can I show you how our integrated Domain & DNS, Marketplace, and other services help you get set up in hours, not weeks?",
+            dq6: "How important is building on an open-source, automatable foundation to avoid vendor lock-in as you scale?", pbo6: "We're passionate about helping startups avoid vendor lock-in. Can we discuss how our open ecosystem and first-class Terraform provider can support your growth?"
+        }
+    };
+
+    const refreshButton = document.getElementById('refresh-button');
+    refreshButton.addEventListener('click', () => {
+        currentSetIndex = (currentSetIndex + 1) % 3; // Cycle between 0, 1, and 2
+        updateContent();
+    });
+
+    function updateContent(resetIndex = false) {
+        if (resetIndex) {
+            currentSetIndex = 0;
+        }
+
+        const selector = document.getElementById('industry-selector');
+        const industry = selector.value;
+        const dynamicArea = document.getElementById('dynamic-area');
+        const initialMessage = document.getElementById('initial-message');
+        const refreshBtn = document.getElementById('refresh-button');
+
+        if (!industry || industry === 'placeholder') {
+            dynamicArea.classList.add('hidden');
+            initialMessage.classList.remove('hidden');
+            refreshBtn.classList.add('hidden');
+            return;
+        }
+
+        const data = INDUSTRY_DATA[industry];
+        document.getElementById('industry-title').textContent = industry;
+        const valueDriversElement = document.getElementById('value-drivers');
+        
+        valueDriversElement.innerHTML = data.valueDrivers.replace(/Value Drivers: (.*?)\. Product Focus: (.*?)\./s, 
+            `<p class="font-semibold text-lg mb-2 text-purple-600 dark:text-purple-400">Value Drivers:</p>
+             <p class="mb-4">${'$1'}</p>
+             <p class="font-semibold text-lg mb-2 text-purple-600 dark:text-purple-400">Product Focus:</p>
+             <p>${'$2'}</p>`);
+        
+        const keySets = [
+            { pbo1: 'pbo1', dq1: 'dq1', pbo2: 'pbo2', dq2: 'dq2' },
+            { pbo1: 'pbo3', dq1: 'dq3', pbo2: 'pbo4', dq2: 'dq4' },
+            { pbo1: 'pbo5', dq1: 'dq5', pbo2: 'pbo6', dq2: 'dq6' }
+        ];
+
+        const currentKeys = keySets[currentSetIndex];
+
+        document.getElementById('pbo1').textContent = data[currentKeys.pbo1];
+        document.getElementById('dq1').textContent = data[currentKeys.dq1];
+        document.getElementById('pbo2').textContent = data[currentKeys.pbo2];
+        document.getElementById('dq2').textContent = data[currentKeys.dq2];
+        
+        initialMessage.classList.add('hidden');
+        dynamicArea.classList.remove('hidden');
+        refreshBtn.classList.remove('hidden');
+        feather.replace();
+
+        if (resetIndex) {
+             dynamicArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    }
+    window.onload = () => updateContent(true);
+</script>
+
+</body>
+</html>
