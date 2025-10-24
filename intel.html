@@ -62,7 +62,7 @@
     <div class="container mx-auto px-4 py-3">
         <div class="flex justify-between items-center">
             <a href="index.html" class="flex items-center space-x-2">
-                <img src="/images/Scaleway-Logomark-White.png" alt="Logo" class="h-8 mr-2">
+                <img src="/images/scaleway-logomark-white.png" alt="Logo" class="h-8 mr-2">
                 <span class="text-xl font-bold text-gray-800 dark:text-white font-heading">McGPT</span>
             </a>
             <nav class="hidden md:flex space-x-8">
@@ -106,18 +106,18 @@
                 <div class="flex items-center justify-center mb-3">
  <img src="/images/3D_POP-Instances-Illustration-3D.png" alt="MEDDICC Illustration" class="w-40 mx-auto my-4">
             </div>
-                <p class="text-gray-700 dark:text-gray-300 max-w-2xl mx-auto mb-8">Match competitive products instantly</p>
+                <p class="text-gray-700 dark:text-gray-300 max-w-2xl mx-auto mb-8">Match competitive products and identify key differentiators instantly.</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                 <div class="text-center">
-                    <label for="scaleway-product-selector" class="block text-sm font-bold text-gray-800 dark:text-gray-200 mb-2">Competitor by Scaleway Product</label>
+                    <label for="scaleway-product-selector" class="block text-sm font-bold text-gray-800 dark:text-gray-200 mb-2">Find Competitors by Scaleway Product</label>
                     <select id="scaleway-product-selector" class="block w-full py-3 px-4 pr-10 border border-gray-300 dark:border-gray-600 rounded-xl text-base font-semibold text-gray-800 dark:text-gray-200 bg-white dark:bg-gray-700 focus:ring-2 focus:ring-purple-500 focus:outline-none transition duration-200 shadow-lg text-center">
                         <option value="">- Select a Scaleway Product -</option>
                     </select>
                 </div>
 
                 <div class="text-center">
-                    <label for="competitor-search" class="block text-sm font-bold text-gray-800 dark:text-gray-200 mb-2">Competitor Product vs Scaleway</label>
+                    <label for="competitor-search" class="block text-sm font-bold text-gray-800 dark:text-gray-200 mb-2">Find Scaleway Equivalent by Competitor</label>
                     <input type="search" id="competitor-search" placeholder="e.g., EC2, S3, Blob Storage..." class="block w-full py-3 px-4 border border-gray-300 dark:border-gray-600 rounded-xl text-base font-semibold text-gray-800 dark:text-gray-200 bg-white dark:bg-gray-700 focus:ring-2 focus:ring-purple-500 focus:outline-none transition duration-200 shadow-lg text-center">
                 </div>
                 </div>
@@ -162,9 +162,9 @@
     themeToggle.addEventListener('click', () => {
         html.classList.toggle('dark');
         localStorage.theme = html.classList.contains('dark') ? 'dark' : 'light';
-        feather.replace(); // Re-run feather to update icon colors if needed
+        feather.replace();
     });
-    // Set initial theme
+
     if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
         html.classList.add('dark');
     } else {
@@ -182,65 +182,33 @@
     });
     
     feather.replace();
-
-    // --- START: Auto-scroll effect ---
-    const mainContent = document.querySelector('main');
-    let initialScrollDone = false;
-
-    const handleInitialScroll = (event) => {
-        // This function triggers only on the user's first downward scroll attempt from the top of the page.
-        if (!initialScrollDone && window.scrollY === 0 && event.deltaY > 0) {
-            event.preventDefault(); // Prevents the default jumpy scroll.
-            mainContent.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Scrolls smoothly to the main content.
-            initialScrollDone = true; // Sets a flag so this doesn't run again.
-        }
-    };
-
-    // We add the listener with { passive: false } because we need to call event.preventDefault().
-    window.addEventListener('wheel', handleInitialScroll, { passive: false });
-    // --- END: Auto-scroll effect ---
-
-
+    
     // --- PAGE-SPECIFIC MAPPER LOGIC ---
     const COMPETITOR_DATA = [
-        { Category: "Compute & Virtual Machines", AWS: "EC2", Azure: "Virtual Machines", GCP: "Compute Engine", OracleOCI: "Compute", Scaleway: "Instances", OVHcloud: "Public Cloud", Outscale: "Virtual Machines" },
-        { Category: "Compute & Virtual Machines", AWS: "Lightsail", Azure: "Azure VMware Solution", GCP: "App Engine", OracleOCI: "VMware Solution", Scaleway: "Bare Metal", OVHcloud: "Dedicated Servers", Outscale: "Bare Metal" },
-        { Category: "Compute & Virtual Machines", AWS: "ECS (Containers)", Azure: "Container Instances", GCP: "Cloud Run", OracleOCI: "Container Engine", Scaleway: "Serverless", OVHcloud: "VPS", Outscale: "Kubernetes" },
-        { Category: "Compute & Virtual Machines", AWS: "EKS (Kubernetes)", Azure: "AKS", GCP: "GKE", OracleOCI: "OKE", Scaleway: "Kubernetes", OVHcloud: "Managed K8s", Outscale: "OKS" },
-        { Category: "Storage", AWS: "S3", Azure: "Blob Storage", GCP: "Cloud Storage", OracleOCI: "Object Storage", Scaleway: "Object Storage", OVHcloud: "Object Storage", Outscale: "Object Storage" },
-        { Category: "Storage", AWS: "EBS", Azure: "Disk Storage", GCP: "Persistent Disk", OracleOCI: "Block Volumes", Scaleway: "Block Storage", OVHcloud: "Block Storage", Outscale: "Block Storage" },
-        { Category: "Storage", AWS: "EFS", Azure: "Azure Files", GCP: "Filestore", OracleOCI: "File Storage", Scaleway: "File Storage", OVHcloud: "File Storage", Outscale: "File Storage" },
-        { Category: "Storage", AWS: "Glacier", Azure: "Archive Storage", GCP: "Coldline Storage", OracleOCI: "Archive Storage", Scaleway: "Archive Storage", OVHcloud: "Archive Storage", Outscale: "Archive Storage" },
-        { Category: "Databases", AWS: "RDS", Azure: "Azure SQL Database", GCP: "Cloud SQL", OracleOCI: "Database", Scaleway: "Managed DB", OVHcloud: "Managed DB", Outscale: "Managed DB" },
-        { Category: "Databases", AWS: "DynamoDB", Azure: "Cosmos DB", GCP: "Firestore", OracleOCI: "NoSQL", Scaleway: "NoSQL", OVHcloud: "NoSQL", Outscale: "NoSQL" },
-        { Category: "Databases", AWS: "Aurora", Azure: "SQL Managed Instance", GCP: "AlloyDB", OracleOCI: "Autonomous DB", Scaleway: "SQL", OVHcloud: "SQL", Outscale: "SQL" },
-        { Category: "Databases", AWS: "Redshift", Azure: "Synapse Analytics", GCP: "BigQuery", OracleOCI: "Data Warehouse", Scaleway: "Data Warehouse", OVHcloud: "Data Warehouse", Outscale: "Data Warehouse" },
-        { Category: "Networking", AWS: "VPC", Azure: "Virtual Network", GCP: "VPC", OracleOCI: "VCN", Scaleway: "VPC", OVHcloud: "VPC", Outscale: "VPC" },
-        { Category: "Networking", AWS: "CloudFront", Azure: "Front Door", GCP: "Cloud CDN", OracleOCI: "CDN", Scaleway: "CDN", OVHcloud: "CDN", Outscale: "CDN" },
-        { Category: "Networking", AWS: "Direct Connect", Azure: "ExpressRoute", GCP: "Interconnect", OracleOCI: "FastConnect", Scaleway: "Direct Connect", OVHcloud: "Direct Connect", Outscale: "Direct Connect" },
-        { Category: "Networking", AWS: "Route 53", Azure: "Traffic Manager", GCP: "Cloud DNS", OracleOCI: "DNS", Scaleway: "DNS", OVHcloud: "DNS", Outscale: "DNS" },
-        { Category: "AI/ML & Analytics", AWS: "SageMaker", Azure: "Machine Learning", GCP: "Vertex AI", OracleOCI: "AI Services", Scaleway: "AI Suite", OVHcloud: "AI Tools", Outscale: "AI Services" },
-        { Category: "AI/ML & Analytics", AWS: "Redshift", Azure: "Synapse Analytics", GCP: "BigQuery", OracleOCI: "Analytics Cloud", Scaleway: "Analytics", OVHcloud: "Analytics", Outscale: "Analytics" },
-        { Category: "AI/ML & Analytics", AWS: "Athena", Azure: "Data Lake Analytics", GCP: "Dataflow", OracleOCI: "Data Flow", Scaleway: "Data Flow", OVHcloud: "Data Flow", Outscale: "Data Flow" },
-        { Category: "AI/ML & Analytics", AWS: "QuickSight", Azure: "Power BI", GCP: "Looker", OracleOCI: "Analytics", Scaleway: "BI Tools", OVHcloud: "BI Tools", Outscale: "BI Tools" },
-        { Category: "Security & Identity", AWS: "IAM", Azure: "Entra ID", GCP: "Cloud IAM", OracleOCI: "IAM", Scaleway: "IAM", OVHcloud: "IAM", Outscale: "IAM" },
-        { Category: "Security & Identity", AWS: "GuardDuty", Azure: "Security Center", GCP: "Security Command Center", OracleOCI: "Security Monitoring", Scaleway: "Security", OVHcloud: "Security", Outscale: "Security" },
-        { Category: "Security & Identity", AWS: "KMS", Azure: "Key Vault", GCP: "Cloud KMS", OracleOCI: "Vault", Scaleway: "KMS", OVHcloud: "KMS", Outscale: "KMS" },
-        { Category: "Security & Identity", AWS: "WAF & Shield", Azure: "DDoS Protection", GCP: "Cloud Armor", OracleOCI: "WAF", Scaleway: "WAF", OVHcloud: "WAF", Outscale: "WAF" },
-        { Category: "Serverless & Event-Driven", AWS: "Lambda", Azure: "Functions", GCP: "Cloud Functions", OracleOCI: "Functions", Scaleway: "Serverless", OVHcloud: "Serverless", Outscale: "Serverless" },
-        { Category: "Serverless & Event-Driven", AWS: "EventBridge", Azure: "Event Grid", GCP: "Eventarc", OracleOCI: "Events", Scaleway: "Events", OVHcloud: "Events", Outscale: "Events" },
-        { Category: "Serverless & Event-Driven", AWS: "Step Functions", Azure: "Logic Apps", GCP: "Workflows", OracleOCI: "Workflows", Scaleway: "Workflows", OVHcloud: "Workflows", Outscale: "Workflows" },
-        { Category: "DevOps & Management", AWS: "CloudFormation", Azure: "Resource Manager", GCP: "Deployment Manager", OracleOCI: "Resource Manager", Scaleway: "Terraform", OVHcloud: "Terraform", Outscale: "Terraform" },
-        { Category: "DevOps & Management", AWS: "CodePipeline", Azure: "DevOps", GCP: "Cloud Build", OracleOCI: "DevOps", Scaleway: "CI/CD", OVHcloud: "CI/CD", Outscale: "CI/CD" },
-        { Category: "DevOps & Management", AWS: "CloudWatch", Azure: "Monitor", GCP: "Operations Suite", OracleOCI: "Monitoring", Scaleway: "Monitoring", OVHcloud: "Monitoring", Outscale: "Monitoring" },
-        { Category: "DevOps & Management", AWS: "Systems Manager", Azure: "Automation", GCP: "Config", OracleOCI: "Management", Scaleway: "Management", OVHcloud: "Management", Outscale: "Management" },
-        { Category: "Edge & IoT", AWS: "IoT Core", Azure: "IoT Hub", GCP: "Cloud IoT Core", OracleOCI: "IoT", Scaleway: "IoT", OVHcloud: "IoT", Outscale: "IoT" },
-        { Category: "Edge & IoT", AWS: "Local Zones", Azure: "Edge Zones", GCP: "Edge Network", OracleOCI: "Edge", Scaleway: "Edge", OVHcloud: "Edge", Outscale: "Edge" },
-        { Category: "Edge & IoT", AWS: "Wavelength", Azure: "Private 5G", GCP: "Mobile Edge", OracleOCI: "Edge", Scaleway: "Edge", OVHcloud: "Edge", Outscale: "Edge" },
-        { Category: "Miscellaneous & Specialized", AWS: "Outposts", Azure: "Azure Stack", GCP: "Anthos", OracleOCI: "Dedicated Region", Scaleway: "Dedibox", OVHcloud: "Bare Metal Pod", Outscale: "Sovereign Cloud" },
-        { Category: "Miscellaneous & Specialized", AWS: "WorkSpaces", Azure: "Virtual Desktop", GCP: "BeyondCorp", OracleOCI: "Virtual Desktop", Scaleway: "Virtual Desktop", OVHcloud: "Virtual Desktop", Outscale: "Virtual Desktop" },
-        { Category: "Miscellaneous & Specialized", AWS: "AppSync", Azure: "API Management", GCP: "Apigee", OracleOCI: "API Gateway", Scaleway: "API Gateway", OVHcloud: "API Gateway", Outscale: "API Gateway" },
-        { Category: "Miscellaneous & Specialized", AWS: "Amplify", Azure: "Static Web Apps", GCP: "Firebase Hosting", OracleOCI: "Static Hosting", Scaleway: "Static Hosting", OVHcloud: "Static Hosting", Outscale: "Static Hosting" }
+        { ScalewayProduct: "Dedibox", Category: "Bare Metal (Legacy)", AWS: "(Legacy)", Azure: "(Legacy)", GCP: "(Legacy)", OVHcloud: "Dedicated Servers (Eco range)", Nebius: "N/A", Outscale: "N/A", Ionos: "Dedicated Servers", Coreweave: "N/A", CleverCloud: "N/A", KeyDifferentiator: "Price & Reliability: For long-term workloads, Dedibox offers unbeatable monthly pricing on reliable dedicated hardware. A cornerstone of our offerings, trusted for years." },
+        { ScalewayProduct: "Apple silicon", Category: "Bare Metal (Specialized)", AWS: "EC2 Mac Instances", Azure: "N/A", GCP: "N/A", OVHcloud: "N/A", Nebius: "N/A", Outscale: "N/A", Ionos: "N/A", Coreweave: "N/A", CleverCloud: "N/A", KeyDifferentiator: "Unique European CI/CD: The leading European cloud offering for native macOS/iOS development. Build and test your Apple apps in a sovereign environment with predictable, cost-effective hardware." },
+        { ScalewayProduct: "Elastic Metal", Category: "Bare Metal", AWS: "EC2 Bare Metal", Azure: "BareMetal Infra", GCP: "Bare Metal Solution", OVHcloud: "Dedicated Servers (Advance, HG)", Nebius: "Bare Metal (GPU only)", Outscale: "Bare Metal Servers", Ionos: "Cloud Cubes", Coreweave: "N/A", CleverCloud: "N/A", KeyDifferentiator: "API-Driven & Flexible: Unlike traditional dedicated servers, our bare metal is fully API-driven and can be billed hourly, offering cloud-like flexibility with the raw power of dedicated hardware." },
+        { ScalewayProduct: "Production Instances", Category: "Virtual Machines", AWS: "EC2 (M, T series)", Azure: "VMs (D, B series)", GCP: "Compute Engine", OVHcloud: "Public Cloud Instances", Nebius: "Virtual Machines", Outscale: "Cloud Instances (ECU)", Ionos: "Cloud Cubes", Coreweave: "N/A", CleverCloud: "N/A", KeyDifferentiator: "Full Ecosystem & Simplicity: Beyond just a VM, get a high-performance instance that's part of a complete, easy-to-use cloud ecosystem. Simpler to navigate and price than hyperscalers and more PaaS-rich than other EU providers." },
+        { ScalewayProduct: "Cost-Optimized Instances", Category: "Virtual Machines", AWS: "EC2 (T series)", Azure: "VMs (B-series)", GCP: "Compute Engine", OVHcloud: "Public Cloud Instances", Nebius: "Virtual Machines", Outscale: "Cloud Instances (ECU)", Ionos: "Cloud Cubes", Coreweave: "N/A", CleverCloud: "N/A", KeyDifferentiator: "Predictable Low Cost: Ideal for dev/test, we offer a consistently low price without the complex credit systems or the volatility of the hyperscaler 'spot' market." },
+        { ScalewayProduct: "GPU Instances", Category: "Virtual Machines (GPU)", AWS: "EC2 (P, G series)", Azure: "VMs (N series)", GCP: "Compute Engine", OVHcloud: "Public Cloud GPU", Nebius: "GPU Instances", Outscale: "GPU Instances", Ionos: "GPU Cloud Server", Coreweave: "GPU Instances", CleverCloud: "N/A", KeyDifferentiator: "Sovereign AI Ecosystem: Access the latest NVIDIA hardware in a sovereign European cloud. Unlike specialized GPU providers, we offer a complete ecosystem (storage, DBs, networking) to support your entire AI application, not just the training." },
+        { ScalewayProduct: "Kubernetes Kapsule", Category: "Containers", AWS: "EKS", Azure: "AKS", GCP: "GKE", OVHcloud: "Managed Kubernetes", Nebius: "Managed Kubernetes", Outscale: "Managed Kubernetes", Ionos: "Managed Kubernetes", Coreweave: "N/A", CleverCloud: "N/A", KeyDifferentiator: "Cost-Effective & True Multi-Cloud: A CNCF-certified Kubernetes service at a fraction of the hyperscaler cost. Our free Kosmos tool lets you manage multi-cloud clusters from a single control plane—a unique feature no other European provider offers." },
+        { ScalewayProduct: "Serverless Functions", Category: "Serverless", AWS: "Lambda", Azure: "Functions", GCP: "Cloud Functions", OVHcloud: "N/A", Nebius: "N/A", Outscale: "N/A", Ionos: "N/A", Coreweave: "N/A", CleverCloud: "N/A", KeyDifferentiator: "Pioneering European Serverless: The most mature European serverless functions platform. Built on open-source Knative for portability, fully integrated with our ecosystem (e.g., triggering from Object Storage events)." },
+        { ScalewayProduct: "Serverless Containers", Category: "Serverless", AWS: "Fargate", Azure: "Container Instances", GCP: "Cloud Run", OVHcloud: "N/A", Nebius: "Serverless Containers", Outscale: "N/A", Ionos: "N/A", Coreweave: "N/A", CleverCloud: "N/A", KeyDifferentiator: "Open Standards & Simplicity: Deploy containers without managing servers. Our developer-friendly platform is built on open standards, offering a simpler, more portable alternative to hyperscaler-proprietary systems." },
+        { ScalewayProduct: "Container Registry", Category: "Containers", AWS: "ECR", Azure: "ACR", GCP: "Artifact Registry", OVHcloud: "Managed Private Registry", Nebius: "Container Registry", Outscale: "N/A", Ionos: "Container Registry", Coreweave: "N/A", CleverCloud: "N/A", KeyDifferentiator: "Integrated & Simple: A private, secure Docker registry fully integrated with our Kubernetes and Serverless ecosystem. Simple, predictable pricing based purely on storage." },
+        { ScalewayProduct: "Object Storage", Category: "Storage", AWS: "S3", Azure: "Blob Storage", GCP: "Cloud Storage", OVHcloud: "S3 Object Storage", Nebius: "Object Storage", Outscale: "S3 Object Storage", Ionos: "S3 Object Storage", Coreweave: "N/A", CleverCloud: "Cellar S3", KeyDifferentiator: "Sovereign & Predictable Egress: Fully S3-compatible, hosted in Europe for data sovereignty. Our key differentiator is a simpler, more predictable pricing model with often significantly cheaper egress fees than the competition." },
+        { ScalewayProduct: "Glacier (Cold Storage)", Category: "Storage", AWS: "S3 Glacier", Azure: "Blob Archive", GCP: "Cloud Archive", OVHcloud: "Cloud Archive", Nebius: "Cold Storage", Outscale: "N/A", Ionos: "N/A", Coreweave: "N/A", CleverCloud: "N/A", KeyDifferentiator: "Low-Cost European Archive: The most cost-effective solution for long-term data archiving and backups within the EU, ensuring compliance and DR at an unbeatable price point." },
+        { ScalewayProduct: "Block Storage", Category: "Storage", AWS: "EBS", Azure: "Disk Storage", GCP: "Persistent Disk", OVHcloud: "Block Storage", Nebius: "Block Storage", Outscale: "Block Storage", Ionos: "Block Storage", Coreweave: "N/A", CleverCloud: "N/A", KeyDifferentiator: "High Performance & Flexible: SSD-based block storage for your instances. Offers more predictable IOPS performance for the price compared to the complex, tiered offerings from other providers." },
+        { ScalewayProduct: "Managed Databases (PG/MySQL)", Category: "Databases", AWS: "RDS", Azure: "Azure DB", GCP: "Cloud SQL", OVHcloud: "Public Cloud Databases", Nebius: "Managed DBs", Outscale: "N/A", Ionos: "Managed DBs", Coreweave: "N/A", CleverCloud: "Managed DBs", KeyDifferentiator: "Simple, Reliable, Integrated: Get a production-ready database in minutes without the feature overload and complex pricing of hyperscalers. It's the perfect balance of performance and simplicity for developers." },
+        { ScalewayProduct: "Managed Database for Redis™", Category: "Databases", AWS: "ElastiCache", Azure: "Cache for Redis", GCP: "Memorystore", OVHcloud: "N/A", Nebius: "Managed Redis", Outscale: "N/A", Ionos: "N/A", Coreweave: "N/A", CleverCloud: "Managed Redis", KeyDifferentiator: "Performance Caching: Deploy a high-performance in-memory cache with one click. Simple, instance-based pricing makes it a straightforward choice for real-time applications." },
+        { ScalewayProduct: "Serverless SQL DB", Category: "Databases", AWS: "Aurora Serverless", Azure: "SQL DB Serverless", GCP: "(No direct equivalent)", OVHcloud: "N/A", Nebius: "N/A", Outscale: "N/A", Ionos: "N/A", Coreweave: "N/A", CleverCloud: "N/A", KeyDifferentiator: "Unique European Offering: A fully serverless SQL database that scales to zero. Perfect for apps with unpredictable traffic, you only pay for what you use. A unique, cost-saving product in the European market." },
+        { ScalewayProduct: "Private Networks (VPC)", Category: "Networking", AWS: "VPC", Azure: "Virtual Network", GCP: "VPC", OVHcloud: "vRack", Nebius: "Virtual Private Cloud", Outscale: "Virtual Private Cloud", Ionos: "Private LAN", Coreweave: "N/A", CleverCloud: "N/A", KeyDifferentiator: "Free & Secure: Completely isolate your infrastructure in a private network, free of charge. A core security feature that other clouds often monetize through add-ons and complex gateway pricing." },
+        { ScalewayProduct: "Load Balancer", Category: "Networking", AWS: "ELB", Azure: "Load Balancer", GCP: "Cloud Load Balancing", OVHcloud: "Load Balancer", Nebius: "Load Balancer", Outscale: "Load Balancer", Ionos: "Load Balancer", Coreweave: "N/A", CleverCloud: "N/A", KeyDifferentiator: "Affordable High Availability: Distribute traffic to ensure high availability for your applications. Our load balancers are easy to configure and significantly more cost-effective than hyperscaler equivalents." },
+        { ScalewayProduct: "Web Hosting", Category: "PaaS", AWS: "Amplify, Lightsail", Azure: "Static Web Apps", GCP: "Firebase Hosting", OVHcloud: "Web Hosting", Nebius: "N/A", Outscale: "N/A", Ionos: "Web Hosting", Coreweave: "N/A", CleverCloud: "N/A", KeyDifferentiator: "Simple & All-in-One: The easiest way to host your sites. Unlike IaaS providers, we provide an all-inclusive package with email and databases, perfect for users who aren't cloud experts." },
+        { ScalewayProduct: "Transactional Email", Category: "PaaS", AWS: "SES", Azure: "Communication Services", GCP: "(Partners)", OVHcloud: "N/A", Nebius: "N/A", Outscale: "N/A", Ionos: "N/A", Coreweave: "N/A", CleverCloud: "N/A", KeyDifferentiator: "European Email Delivery: Ensure your application's emails are sent from European servers, improving deliverability and GDPR compliance. A rare PaaS offering among European IaaS providers." },
+        { ScalewayProduct: "IoT Hub", Category: "PaaS", AWS: "IoT Core", Azure: "IoT Hub", GCP: "IoT Core", OVHcloud: "N/A", Nebius: "N/A", Outscale: "N/A", Ionos: "N/A", Coreweave: "N/A", CleverCloud: "N/A", KeyDifferentiator: "Secure & Scalable IoT: A straightforward, cost-effective, and sovereign solution for your European IoT deployments. An integrated PaaS product most IaaS providers lack." },
+        { ScalewayProduct: "IAM", Category: "Security & Account", AWS: "IAM", Azure: "Azure AD", GCP: "Cloud IAM", OVHcloud: "User Management", Nebius: "IAM", Outscale: "IAM", Ionos: "User Management", Coreweave: "N/A", CleverCloud: "N/A", KeyDifferentiator: "Granular Control: A fundamental security tool included free with your account. Manage users, groups, and permissions with fine-grained control across all Scaleway products." },
+        { ScalewayProduct: "Cockpit (Monitoring)", Category: "Management Tools", AWS: "CloudWatch", Azure: "Monitor", GCP: "Cloud's ops suite", OVHcloud: "Metrics Data Platform", Nebius: "Monitoring", Outscale: "N/A", Ionos: "Monitoring", Coreweave: "N/A", CleverCloud: "Metrics", KeyDifferentiator: "Integrated Observability: Gain a unified view of your infrastructure's health and performance. Cockpit is included by default, providing easy monitoring without the complex setup of third-party tools." },
+        { ScalewayProduct: "Managed Inference", Category: "AI / ML", AWS: "SageMaker", Azure: "Azure ML", GCP: "Vertex AI", OVHcloud: "AI Deploy", Nebius: "N/A", Outscale: "N/A", Ionos: "N/A", Coreweave: "N/A", CleverCloud: "N/A", KeyDifferentiator: "Effortless & Sovereign Model Serving: Deploy trained models with a fully managed API. We handle the infrastructure and scaling in a sovereign environment, offering a simpler and more integrated experience than setting up your own GPU servers." }
     ];
 
     const scalewaySelector = document.getElementById('scaleway-product-selector');
@@ -249,13 +217,20 @@
     const initialMessage = document.getElementById('initial-message');
 
     function populateScalewayDropdown() {
-        const scalewayProducts = [...new Set(COMPETITOR_DATA.map(item => item.Scaleway))].sort();
+        const scalewayProducts = [...new Set(COMPETITOR_DATA.map(item => item.ScalewayProduct))].sort();
         scalewayProducts.forEach(product => {
             const option = document.createElement('option');
             option.value = product;
             option.textContent = product;
             scalewaySelector.appendChild(option);
         });
+    }
+
+    function displayResults(html) {
+        resultsArea.innerHTML = html;
+        initialMessage.classList.add('hidden');
+        resultsArea.classList.remove('hidden');
+        resultsArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
     scalewaySelector.addEventListener('change', () => {
@@ -266,20 +241,29 @@
             initialMessage.classList.remove('hidden');
             return;
         }
-        const matchingRows = COMPETITOR_DATA.filter(row => row.Scaleway === selectedProduct);
-        let html = `<h2 class="text-2xl font-bold text-white text-center">Competitors for ${selectedProduct}</h2>`;
-        matchingRows.forEach(row => {
-            html += `<div class="bg-slate-900/70 backdrop-blur-sm p-6 rounded-xl shadow-lg"><h3 class="text-lg font-bold text-purple-400 mb-4">Category: ${row.Category}</h3><div class="grid grid-cols-2 sm:grid-cols-3 gap-4 text-base">`;
-            const providers = { AWS: row.AWS, Azure: row.Azure, GCP: row.GCP, OracleOCI: row.OracleOCI, OVHcloud: row.OVHcloud, Outscale: row.Outscale };
-            for (const [provider, product] of Object.entries(providers)) {
-                html += `<div><span class="font-semibold text-gray-100">${provider}:</span> <span class="text-gray-200">${product}</span></div>`;
-            }
-            html += `</div></div>`;
-        });
-        resultsArea.innerHTML = html;
-        initialMessage.classList.add('hidden');
-        resultsArea.classList.remove('hidden');
-        resultsArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        
+        const row = COMPETITOR_DATA.find(r => r.ScalewayProduct === selectedProduct);
+        if (!row) return;
+
+        let html = `<div class="bg-slate-900/70 backdrop-blur-sm p-6 rounded-xl shadow-lg">`;
+        html += `<h2 class="text-2xl font-bold text-white mb-4">Comparison for: <span class="text-purple-400">${selectedProduct}</span></h2>`;
+        html += `<p class="text-sm text-gray-400 mb-6">Category: ${row.Category}</p>`;
+        
+        // Competitor Equivalents Section
+        html += `<div class="mb-6"><h3 class="text-lg font-semibold text-white mb-3 flex items-center"><i data-feather="shuffle" class="w-5 h-5 mr-2 text-cyan-400"></i>Competitor Equivalents</h3><div class="grid grid-cols-2 sm:grid-cols-3 gap-4 text-base">`;
+        const competitors = { AWS: row.AWS, Azure: row.Azure, GCP: row.GCP, OVHcloud: row.OVHcloud, Nebius: row.Nebius, Outscale: row.Outscale, Ionos: row.Ionos, Coreweave: row.Coreweave, CleverCloud: row.CleverCloud };
+        for (const [provider, product] of Object.entries(competitors)) {
+            html += `<div><span class="font-semibold text-gray-100">${provider}:</span> <span class="text-gray-300">${product || 'N/A'}</span></div>`;
+        }
+        html += `</div></div>`;
+        
+        // Key Differentiation Section (MOVED HERE)
+        html += `<div class="border-t border-purple-800 pt-6"><h3 class="text-lg font-semibold text-white mb-3 flex items-center"><i data-feather="zap" class="w-5 h-5 mr-2 text-yellow-400"></i>Key Differentiation & Talking Points</h3><p class="text-gray-200 bg-purple-900/30 p-4 rounded-lg">${row.KeyDifferentiator}</p></div>`;
+
+        html += `</div>`;
+        
+        displayResults(html);
+        feather.replace();
     });
 
     competitorSearch.addEventListener('input', () => {
@@ -291,26 +275,36 @@
             return;
         }
         const results = [];
-        const providers = ["AWS", "Azure", "GCP", "OracleOCI", "OVHcloud", "Outscale"];
+        const providers = ["AWS", "Azure", "GCP", "OVHcloud", "Nebius", "Outscale", "Ionos", "Coreweave", "CleverCloud"];
         COMPETITOR_DATA.forEach(row => {
             providers.forEach(provider => {
                 if (row[provider] && row[provider].toLowerCase().includes(searchTerm)) {
-                    results.push({ provider, competitorProduct: row[provider], scalewayProduct: row.Scaleway, category: row.Category });
+                    results.push({ 
+                        provider: provider, 
+                        competitorProduct: row[provider], 
+                        scalewayProduct: row.ScalewayProduct, 
+                        category: row.Category,
+                        differentiator: row.KeyDifferentiator
+                    });
                 }
             });
         });
-        let html = `<h2 class="text-2xl font-bold text-white text-center">Results for "${competitorSearch.value}"</h2>`;
+        
+        let html = `<h2 class="text-2xl font-bold text-white text-center mb-6">Results for "${competitorSearch.value}"</h2>`;
         if (results.length > 0) {
             results.forEach(res => {
-                html += `<div class="bg-slate-900/70 backdrop-blur-sm p-6 rounded-xl shadow-lg"><p class="text-gray-200 text-lg mb-2"><span class="font-bold text-white">${res.competitorProduct}</span> (${res.provider})</p><p class="text-purple-400 font-bold text-xl">Scaleway Equivalent: ${res.scalewayProduct}</p><p class="text-sm text-gray-400 mt-2">Category: ${res.category}</p></div>`;
+                html += `<div class="bg-slate-900/70 backdrop-blur-sm p-6 rounded-xl shadow-lg">`;
+                html += `<p class="text-gray-300 text-lg mb-2">Match for <span class="font-bold text-white">${res.competitorProduct}</span> (${res.provider})</p>`;
+                html += `<p class="text-purple-400 font-bold text-2xl">Scaleway Equivalent: ${res.scalewayProduct}</p>`;
+                html += `<p class="text-sm text-gray-400 mt-2 mb-4">Category: ${res.category}</p>`;
+                html += `<div class="border-t border-purple-800 pt-4"><h4 class="font-semibold text-white mb-2 flex items-center"><i data-feather="zap" class="w-4 h-4 mr-2 text-yellow-400"></i>Talking Point</h4><p class="text-gray-200">${res.differentiator}</p></div>`;
+                html += `</div>`;
             });
         } else {
             html += `<p class="text-center text-white/80 mt-4">No matching competitor products found.</p>`;
         }
-        resultsArea.innerHTML = html;
-        initialMessage.classList.add('hidden');
-        resultsArea.classList.remove('hidden');
-        resultsArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        displayResults(html);
+        feather.replace();
     });
 
     window.onload = () => {
